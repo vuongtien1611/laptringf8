@@ -1,0 +1,44 @@
+VE CAU TAO
+- the du: day du the dong va the mo
+- the rong: chi co the mo
+
+VE TINH CHAT:
+ - block:
+     la 1 block chiem 100% viewport( khung hinh tren website)
+     exp: div
+ - inline:
+     dung den dau thi chiem den day
+    exp: span
+
+ div:
+      - ko co y nghia ve SEO ko co ngu nghia(gg k doc the div => k coi la spam)
+      - tac dung: gom cac nhom lai voi nhau
+
+ span:
+      - co y nghia ve SEO
+      - tac dung: viet cac cum tren mot dong
+
+ heading:
+      - h1,2,3,4,5,6 la block
+      - trong 1 trang chi dc phep co 1 H1, khong nhay coc(sau H1 phai la H2,3,4..)
+      - co the co nhieu the h2,3,4,5..
+ p:
+      - la the block
+      - hai the p lien nhau thi se co mot dong trang o giua hai doan van ban
+      - tac dung: de tren khai mot doan van ban
+      - luon co mot khoang cach nhat dinh
+
+ br:
+      - la the tu dongf ma khong co mot dong trang
+      - tac dung: xuong dong trong mot doan van ban(nut enter)
+      - sinh ra la de nam trong the p
+
+** trong mot anh co nhieu vat the ma muon up tung vat the 1 len sever thi ta lay toa do trong buc anh do roi up len thay vi cat tung anh mot len (up so nhe hon up anh)
+ img:
+      - la mot the rong
+      - tac dung: hien thi anh
+      - src: link anh
+      - alt: mo ta anh( neu anh loi => hien alt)
+      - width: chiau rong anh
+      - height: chiau cao anh
+      -title: tieu de anh
