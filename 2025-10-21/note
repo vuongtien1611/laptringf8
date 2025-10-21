@@ -1,0 +1,13 @@
+the <a>:
+     - ten: the dieu huong
+     - attribute:
+              href: gan link muon dieu huong toi( back link )
+     - co the dung the nay de lien ket voi cac file bang cach gan ten file vao trong thuoc tinh href
+     - exp: <a href="https://www.youtube.com/">vao day</a> --> bam chu "vao day" se chuyen sang ytb
+the <hr>:
+     tac dung: gach ngang
+
+the <ul>&<li> <ol>&<li>:
+     tac dung: tao danh sach
+      cap the ul va li: danh dau cham
+      cap the ol va li: danh dau so
