@@ -1,0 +1,125 @@
+ve cau tao
+    - the du: day du cap the dong-mo
+        exp: html, body
+    - the rong: ko co the dong
+        exp: meta
+
+
+ve tinh chat
+    - block
+        la 1 block chiem 100% viewport
+        exp:
+            div
+            h1 -> h6
+            p
+    - inline
+        dung den dau thi rong den day, neu dai hon viewport -> xuong dong
+        exp:
+            span
+            br
+            img
+
+
+
+SEO:
+    - ngu nghia
+    div, span ko co nghia gi ve seo
+
+
+div:
+    ko co y nghia ve SEO, ko co ngu nghia
+    gom nhom cac thanh phan lai voi nhau
+
+
+span:
+    ko co ngu nghia
+
+
+
+heading:
+    h1, h2, h3, h4, h5, h6 la cac the block
+    nhan manh thong tin
+        h1: manh nhat, một page chi nen co duy nhat 1 the h1
+        co the co nhieu the h2, h3, h4, h5, h6
+        ko dc nhay coc the
+            vd: h1 -> h3 (sai), h3 -> h6 (sai)
+
+
+
+p:
+    la the block, su dung de trien khai 1 doan van ban, co khoang cach nhat dinh
+
+br:
+    xuong dong trong 1 doan van, la the inline, ko co ngu nghia j
+    -> chi nen nam trong the p
+
+img:
+    hien thi anh, the rong (self-closing)
+    src: duong dan anh
+    alt: goi y hinh anh (neu anh loi thi hien alt)
+    width: chieu rong anh
+    height: chieo cao anh
+    title: tieu de anh
+
+ul,li va ol,li:
+    tac dung: tao mot danh dach
+    ul danh sach co cac dau cham trc cac muc
+    ol danh sach co cac so trc cac muc
+
+CẶP THẺ CON SẼ ĐƯỢC KẾ THỪA CÁC TÍNH CHẤT CỦA CẶP THẺ CHA.
+i:
+    tac dung: in nghieng, khong co ngu nghia
+    la 1 the du
+
+em:
+    giong the i ve hinh thuc
+    co y nghia nhan manh
+
+b:
+    tac dung: in dam, k co ngu nghia
+    la 1 the du
+
+strong:
+    giống thẻ b về hình thức
+    có ý nghĩa nhấn mạnh
+
+
+mark:
+    tô sáng nội dung
+
+ins:
+    gạch chân
+
+sub:
+    tác dụng: dung chi chi số
+    VD: H2O
+
+del:
+      gạch giữa chữ
+
+&time; :  (https://www.freeformatter.com/html-entities.html)
+      dau nhan trong toan học
+
+sup:
+      lũy thừa
+
+thẻ icon: https://www.w3schools.com/html/html_emojis.asp
+
+table:
+      tác dụng: tạo bảng
+      gồm có: hàng và cột
+      hàng: tr (table row)
+      cột:  td (table data)
+  có ba phần: phần đầu <thead>; phần thân <tbody>; phần cuối <tfoot>
+      thẻ cột sẽ nằm trong thẻ hàng
+      các attribute:
+                    +, trong thẻ table: border="", cellspacling = "", cellpadding = ""
+                    +, trong thẻ td:    align = "left", align = "center", align = "right" (căn lề)
+                       bgcolor = "", width = "", height = ""
+                       colspan = ""(gộp cột, bằng bao nhiêu thì gộp bấy nhiêu), rowspan = ""(gộp hàng,bằng bao nhiêu thì gộp bấy nhiêu)
+                    scope = "col", scope = "row"
+                    valign = "top", valign = "middle", valign = "bottom"
+                    headers = ""
+
+
+
