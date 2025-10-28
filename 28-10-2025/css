@@ -1,0 +1,5 @@
+tất cả các thẻ html đều có css mặc định
+có 3 cách viết css:
+                    + inline: viết trong attribute style
+                    + internal
+                    + external

@@ -110,7 +110,7 @@ table:
       gồm có: hàng và cột
       hàng: tr (table row)
       cột:  td (table data)
-  có ba phần: phần đầu <thead>; phần thân <tbody>; phần cuối <tfoot>
+      có ba phần: phần đầu <thead>; phần thân <tbody>; phần cuối <tfoot>
       thẻ cột sẽ nằm trong thẻ hàng
       các attribute:
                     +, trong thẻ table: border="", cellspacling = "", cellpadding = ""
@@ -120,6 +120,92 @@ table:
                     scope = "col", scope = "row"
                     valign = "top", valign = "middle", valign = "bottom"
                     headers = ""
+
+pre:
+     tác dụng: viết như nào trong code thì sẽ hiển thị như vậy trên trình duyệt
+
+<code>
+      tác dụng: nhấn mạnh đây là một đoạn code
+
+<iframe>
+      tác dụng: nhúng video,ảnh,gg map...
+
+
+
+<intput>
+       tác dụng: tạo một ô để nhập dữ liệu
+       là một thẻ inline
+   +, atribule:
+         name: tên của input
+         placeholder:  hiển thị trong ô nhập dữ liệu
+         value: hiển thị giá trị măc định
+         type:
+              type="text": nhập chữ
+              type="password": hiển thị dấu * thay vị giá trị thô
+               type="email": nhập email, check cem có @ k
+               type="number": nhập số
+               type="submit": nút bấm, khi bấm vào đây thì verify đc email.
+               type="checkbox": nút chọn (chọn đc nhiều phương án)
+               type="radio": nút chọn(chỉ chọn đc một trong các đáp án)
+
+
+<label>
+       tác dụng: định nghĩa cho ô dữ liệu
+
+
+<form>
+      action: hành dộng
+
+      method: phương thức  (post | get  | put | patch)
+
+              +, get: dữ liệu được gửi qua URL
+                     HẠN CHẾ: KÉM BẢO MẬT; KHI MÀ THÔNG TIN QUÁ NHIỀU THÌ URL SẼ QUÁ DÀI -> vượt quá đọ dài của URL cho phép (LIMIT)
+
+             +, post,put,patch: dữ liệu không đc gửi qua URL
+    diều kiện:
+       - thẻ form phải có action và method nếu k truyền method -> mặc định là method GET
+       - input type là submit thi đữ liệu sẽ đc gửi về link trong action với method đã đc chọn
+       -
+
+
+ select-option
+              hiển thị 1 danh sách chọn sẵn
+              nếu thẻ option không có value thi giá hiển thị trong
+
+<button>
+         tạo nút bấm chức năng giống submit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,67 +1,45 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-<table border="10" cellspacing="4">
-    <thead>
-    <td>Stt</td>
-    <td>B.No</td>
-    <td>sale type</td>
-    <td>buyer</td>
-    <td>product name</td>
-    <td>qualyti</td>
-    <td>size</td>
-    <td>quantity</td>
-    <td>unit</td>
-    <td>boxes</td>
-    <td>stems</td>
-    <td>price</td>
-    <td>amount</td>
-    </thead>
-    <tboby>
-        <tr>
-            <td rowspan = "2" align = "center">1</td>
-            <td rowspan = "2" align = "center">1</td>
-            <td rowspan = "2" align = "center">3</td>
-            <td rowspan = "2"></td>
-            <td rowspan = "2">máy cưa</td>
-            <td></td>
-            <td align = "center">-</td>
-            <td align="right">20</td>
-            <td align="center">anh</td>
-            <td align="right">5</td>
-            <td align="right">100</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td colspan = "8">a</td>
-        </tr>
-        <tr>
-            <td rowspan = "2" align = "center">1</td>
-            <td rowspan = "2" align = "center">1</td>
-            <td rowspan = "2" align = "center">3</td>
-            <td rowspan = "2"></td>
-            <td rowspan = "2">máy cưa</td>
-            <td></td>
-            <td align = "center">-</td>
-            <td align="right">20</td>
-            <td align="center">anh</td>
-            <td align="right">5</td>
-            <td align="right">100</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td colspan = "8">a</td>
-        </tr>
-    </tboby>
-</table>
+<form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+    <div>
+    <label for="user">username</label>
+    <input id="user" placeholder="username" type="text" name="username">
+    <br>
+    <input placeholder="email" name="email" type="email">
+    <br>
+    <input name="old" type="password"><br>
+    <span> ban thich gi?</span><br>
+    <label>thit cho</label>
+    <input type="checkbox" name="food" value="dog"><br>
+    <labler>thit ga</labler>
+    <input type="checkbox" name="food" value="chicken"><br>
+    <lable>thit meo</lable>
+    <input type="checkbox" name="food" value="cat"><br>
+   </div>
+    <div>
+        <span>Giới Tính</span>
+        <label>nam</label>
+        <input type="radio" name="gender" value="nam"><br>
+        <label>nữ</label>
+        <input type="radio" name="gender" value="nữ"><br>
+        <label>khác</label>
+        <input type="radio" name="gender" value="khác"><br>
+    </div>
+    <span>ban lam nghe gi</span>
+    <select>
+        <option value="it" name="nghề nghiệp">it</option>
+        <option value="docter" name="nghề nghiệp">bác sĩ</option>
+        <option value="teacher" name="nghề nghiệp">giao vien</option>
+    </select>
+<button><a href="https://jbagy.me/wp-content/uploads/2025/03/Hinh-anh-anime-sad-boy-dep-5-682x1024.jpg"> click</a></button>
+    <input type="submit">
+</form>
 </body>
 </html>
