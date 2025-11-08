@@ -1,0 +1,27 @@
+h1 ~ p{
+    color: blue;
+}
+
+input[type="text"]{
+    color: red;
+}
+input[type="email"]{
+    color: orange;
+}
+
+
+input[id="do"]:checked ~ p {
+    color: red;
+}
+
+input[id="vang"]:checked ~ p {
+    color: yellow;
+}
+
+input[id="xanh"]:checked ~ p {
+    color: green;
+}
+
+#do:checked ~ p {color: red;}
+#vang:checked ~ p {color: yellow;}
+#xanh:checked ~ p {color: green;}

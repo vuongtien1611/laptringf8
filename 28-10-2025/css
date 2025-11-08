@@ -3,3 +3,78 @@ có 3 cách viết css:
                     + inline: viết trong attribute style
                     + internal
                     + external
+-------------------------------------------------------------------------------------------------------
+selector
+ +,   h1, p{
+       color: red;
+       }
+            -> h & p co chung css
+
+ +,    h1 + p{
+       color: red;
+      }
+           -> p dung canh h chiu anh huong cua css ( co the h1 + p + p + p + p...)
+
+ +,   h1 ~ p{
+       color: blue;
+     }
+           -> p cung cap va dung sau h chiu anh hunong cua css
+
+ +,   h1:hover {
+     color: red;
+     }
+           -> khi di chuot vao the h1 thi the h1 se thanh mau do
+
++,   accent-color: red;
+           -> doi background cho o tich vd (type="checkbox")|| (type="radio")
+
+
+*DINH DANG KIEU CHU
+
++,   h1{
+       font-size: 100px; // px la mot diem anh(o vuong)
+       }
+     -> h1 se co kich thuoc phong chu la 100px
+
+
++,   h1{
+       font-family: "Times New Roman"
+       }
+       -> h1 se co font la Times New Roman
+
++,   p {
+      font-weight: bold;
+        }
+      -> làm chữ đậm (tăng độ dày của nét chữ).
+
++,   p{
+       color: rgb(255, 0, 0); // gia tri nho nhat la 0 lon nhat la 255 dai dien cho mau red, green, blue
+       }
+         -> ta ca cac mau tren the gioi deu duoc cau tao tu ba mau (red, green, blue) pha tron theo ti le khac nhau
+         VD: ba bong den co cuong do bang nhau co mau do xanh luc xanh duong
+
+
+           em: don vi do do phan tram cua font-size cua phan tu cha (font-size: 16px "mac dinh"): an theo cha gan no nhat
+           VD: font-size: 1em;
+
+           rem: don vi do do phan tram cua font-size cua body: an theo cha lon nhat
+           VD: font-size: 1rem;
+
+           vh: don vi do do phan tram cua height cua browser
+           vw: don vi do do phan tram cua width cua browser
+
++,  .p2{
+          line-height: 1.5;
+          }
+         -> do dan dong
++,   background-color: red;
+         -> doi mau nen cho the
+                                                                   => background-image duoc uu tien hon background-color (anh se dung trc mau)
++,   background-image: url("https://www.w3schools.com/css/trolltunga.jpg");
+         -> doi hinh nen cho the
+
++,   background-repeat: no-repeat;
+          khong lap lai anh khi anh nho hon nen
+
++,   background-position: right; // top, bottom, left, right (co the ket hop)
+     background-position: 10px 20px; chinh theo toa do (x,y) co the am
