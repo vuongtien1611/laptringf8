@@ -105,6 +105,8 @@ sup:
 
 thẻ icon: https://www.w3schools.com/html/html_emojis.asp
 
+ duong dan tuong doi duong dan tuyet doi
+
 table:
       tác dụng: tạo bảng
       gồm có: hàng và cột
@@ -129,8 +131,25 @@ pre:
 
 <iframe>
       tác dụng: nhúng video,ảnh,gg map...
-
-
+      attribute: src = "" // Đường dẫn tới trang web hoặc nội dung bạn muốn nhúng.
+               +, width = "" ||  height = ""    // Kích thước khung hiển thị (px hoặc %).
+               +, allowfullscreen //
+               +, frameborder = ""       // 0 = không có viền
+                                         // 1 = có viền
+               +, loading =""      // Tối ưu tốc độ tải trang.
+                                     lazy → tải khi cuộn tới khung
+                                     eager → tải ngay lập tức
+               +, name=""           // Tên định danh để sử dụng với target="".
+               +, title=""          // Mô tả nội dung — bắt buộc để hỗ trợ người khiếm thị (Accessibility).
+               +, allow=""          // Xác định quyền cho iframe.
+                                        +,  vi du:  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                              -, allowfullscreen:	Cho phép bật fullscreen
+                                                 autoplay:        	Tự chạy video
+                                                 clipboard-write:	Ghi vào clipboard
+                                                 encrypted-media:	Phát nội dung có DRM
+                                                 gyroscope:     	Dùng cảm biến xoay
+                                                 accelerometer: 	Dùng cảm biến chuyển động
+                                                 picture-in-picture:Chế độ video thu nhỏ
 
 <intput>
        tác dụng: tạo một ô để nhập dữ liệu
@@ -153,7 +172,7 @@ pre:
        tác dụng: định nghĩa cho ô dữ liệu
 
 
-<form>
+<form>  // https://api-gateway.fullstack.edu.vn/action_page.php
       action: hành dộng
 
       method: phương thức  (post | get  | put | patch)

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fixed Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .msg-box {
+            background-color: #292929;
+            color: #fff;
+            border-radius: 1rem;
+            padding: 0.5rem;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .triangle {
+            width: 0;
+            border-color: #292929 transparent transparent;
+            border-style: solid;
+            border-width: 6px;
+            margin-left: 15px;
+        }
+
+        .regi {
+            width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin: 40px auto;
+            display: none;
+        }
+
+        .text-field input {
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: calc(100% - 16px);
+            margin-top: 25px;
+            outline-color: #a3a0a0;
+            font-size: 16px;
+        }
+
+        .text-field {
+            position: relative;
+            width: 100%;
+        }
+
+        .info-msg {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            display: none;
+        }
+
+        /* Hiện tooltip khi hover input */
+        .text-field input:hover + .info-msg {
+            display: block;
+        }
+
+        .regi {
+            position: relative;
+        }
+
+        .header {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .regi--title {
+            font-weight: bold;
+            text-align: center;
+        }
+        .course-list{
+            margin-top: 20px;
+        }
+        .checkbox{
+            margin: 10px 0;
+        }
+        .regi button{
+            width: 100%;
+            padding: 10px;
+            background-color: #ffae00;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+        }
+        #open:checked ~ .regi{
+            display: block;
+        }
+       .overlay{
+           position: absolute;
+           inset: 0;
+           display: none;
+           background-color: rgba(0,0,0,0.5);
+       }
+       #open:checked ~ .overlay{
+           display: block;
+       }
+    </style>
+</head>
+<body>
+<label for="open">open</label>
+<input type="checkbox" id="open" hidden="">
+<label for="open" class="overlay"></label>
+
+<div class="regi">
+    <label for="open" class="header">&times</label>
+    <div class="regi--title">ĐĂNG KÝ TƯ VẤN</div>
+    <!-- FIELD 1 -->
+    <div class="text-field">
+        <input type="password" placeholder="********">
+        <div class="info-msg">
+            <div class="msg-box">Nhập mật khẩu của bạn</div>
+            <div class="triangle"></div>
+        </div>
+    </div>
+
+    <!-- FIELD 2 -->
+    <div class="text-field">
+        <input type="text" placeholder="Trần Hưng Đạo">
+        <div class="info-msg">
+            <div class="msg-box">Nhập tên đầy đủ</div>
+            <div class="triangle"></div>
+        </div>
+    </div>
+
+    <!-- FIELD 3 -->
+    <div class="text-field">
+        <input type="email" placeholder="example@gmail.com">
+        <div class="info-msg">
+            <div class="msg-box">Nhập email hợp lệ</div>
+            <div class="triangle"></div>
+        </div>
+    </div>
+    <div class="course-list">
+        <span><strong>khoa hoc quan tam</strong></span><br>
+        <div class="checkbox">
+            <input type="checkbox" name="course" id="html" value="HTML/CSS">
+            <label for="html">HTML/CSS</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="course" id="python" value="Python">
+            <label for="python">Python</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="course" id="js" value="JavaScript">
+            <label for="js">JavaScript</label>
+        </div>
+    </div>
+
+    <button>ĐĂNG KÝ TƯ VẤN</button>
+</div>
+
+
+
+</body>
+</html>

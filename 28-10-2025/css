@@ -3,7 +3,10 @@ có 3 cách viết css:
                     + inline: viết trong attribute style
                     + internal
                     + external
--------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------Buổi 9--------------------------------------------------------
 selector
  +,   h1, p{
        color: red;
@@ -18,7 +21,7 @@ selector
  +,   h1 ~ p{
        color: blue;
      }
-           -> p cung cap va dung sau h chiu anh hunong cua css
+           -> p cung cap va dung sau h chiu anh huong cua css
 
  +,   h1:hover {
      color: red;
@@ -78,3 +81,146 @@ selector
 
 +,   background-position: right; // top, bottom, left, right (co the ket hop)
      background-position: 10px 20px; chinh theo toa do (x,y) co the am
+
+
+
+
+----------------------------------------------------------------------------------Buổi 10----------------------------------------------------------------------------------------------------
+fist-child, last-child, nth-child, nth-of-type
+
++,   background-size: cover; // khớp theo chiều ngang của khung hình
+     background-size: contain; khớp theo chiều rộng của khung hình
+     background-size: auto; giữ nguyên kich thuoc của anh gốc
+
++,   background-attachment: fixed; // anh nen cho the khi di chuyen trang
+
++,   text-decoration: none; Bỏ mọi trang trí (thường dùng để bỏ gạch chân của thẻ <a>)
+
++,   list-style: none; // Bỏ hoàn toàn ký hiệu đầu dòng (Thường dùng để tùy biến giao diện menu điều hướng)
+     list-style: upper-alpha; // Đánh số danh sách bằng chữ cái IN HOA: A, B, C, D…
+
++,   :first-child: {   // Chọn phần tử con đầu tiên của một phần tử cha
+       color: red;
+       }
+       :nth-child(2): {    //Chọn phần tử con thứ n theo đúng thứ tự trong các con của phần tử cha
+       color: red;
+       }
+                            Vi du:   li:nth-child(2) > a, li:nth-child(3) > a{   // text dong thu  2 va 3 tro thanh mau do con cac dong khac giu nguyen
+                                               color: red;
+                                           }
+
+       :last-child: {    // Chọn phần tử con cuối cùng của phần tử cha
+       color: red;
+       }
+
+       :nth-of-type(2): {    // Chọn phần tử thứ n nhưng đúng theo loại thẻ
+       color: red;
+       }
++,    background = padding + content
+
++,    cac the luon co cac thanh phan:
+        content
+        padding
+        border
+        margin
+
+
+        1. border
+          -, border-width: top right bottom left
+          -, border-style: solid, dotted, dashed, double, groove, ridge, inset, outset
+          -, border-color: red, green, blue
+          -, border: top right bottom left style color (tong hop)
+        2. padding: top right bottom left
+        3. margin: top right bottom left
+
+---------------------------------------------------------------------------buoi 11----------------------------------------------------------------------------------------------------
++,h1{
+     text-align: center;       // căn giữa chữ ở bên trong phần tử này,chứ không dịch chuyển bản thân phần tử đó.
+     }                        // co cac gia tri: left, right, center, justify(can deu hai ben vi du: nhu bao word)
+
+
++, Thẻ inline chỉ chứa nội dung và nằm trong dòng, vì vậy margin/padding trên–dưới không làm nó “phình” ra theo chiều dọc, nhưng trái–phải vẫn dùng được.
+
++, h1{
+      box-sizing: border-box;   //border-box giúp phần tử giữ đúng kích thước đã đặt, dù bạn thêm padding hay border.
+      padding: 10px;            //mac dinh la content-box (width = content)
+ }                                            width = content + padding + border
+                                              tai vi content va padding nam ben trong border
+
++, width: 50%; // don vi % la kich thuoc phan tu theo phan tu cha(50% chieu rong cua phan tu cha)
+               // chi voi the block
+
++,div{
+      overflow: hidden; //Ẩn (không hiển thị) phần nội dung bị tràn ra ngoài kích thước của phần tử.
+      overflow: scroll; //Luôn hiển thị thanh cuộn dù có tràn hay không.
+      overflow-y: scroll; // hien thi thanh cuon theo chieu doc
+      overflow-x: scroll; // hien thi thanh cuon theo chieu ngang
+}
+
++,div{
+      border-radius: trentraipx trenphaipx duoiphaipx duoitraipx; // bo tron cho border
+}
+
++, resetcss:  (https://meyerweb.com/eric/tools/css/reset/)
+             -, Reset xóa style mặc định.
+             -, Bạn tự đặt margin, padding, font, màu, layout.
+             -, Mọi thứ phải được định nghĩa rõ ràng, vì trình duyệt không còn mặc định nữa.
+
+
++, object-fit:  object-fit dùng để xác định cách hiển thị nội dung bên trong phần tử thay thế (thường là <img> hoặc <video>) khi kích thước phần tử khác với kích thước gốc của ảnh/video.
+               fill; // mac dinh la khong chinh kich thuoc anh
+               cover;
+               contain;
+--------------------------------------------------------------------Buổi 12------------------------------------------------------------------------------------
+
++, display: none;       // Ẩn hoàn toàn phần tử và không chiếm không gian.
++, visibility: hidden; // Ẩn nội dung nhưng vẫn giữ chỗ trên layout.
++, opacity: 0;         // Làm phần tử trong suốt nhưng vẫn tương tác được và vẫn chiếm chỗ.
++, display: block;     // Biến phần tử thành dạng block (chiếm 100% chiều ngang, xuống dòng).
++, display: inline;    // Biến phần tử thành inline (không chỉnh width/height, đứng chung dòng).
++, display: inline-block; // cho phép phần tử đứng cùng hàng như inline nhưng vẫn chỉnh được width, height, margin, padding như block.
++, margin-block: 10px   // Tạo margin-top và margin-bottom = 10px
+                           → Chỉ áp dụng cho các phần tử dạng block.
+
++, left: calc(100% - 10px); // left: calc(100% - 10px);
+                               → Tính toán giá trị động:
+                               left = 100% chiều rộng cha – 10px.
+
++, position:
+     -, thuoc tinh position:
+                -, mac dinh se spa xep tu tren xuong duoi(neu la block) tu trai sang phai(neu la inline)
+                -, position: can thiep ve di chuyen cac phan tu sang cac vi tri khac
+
+     -, cac loai position:
+               -, static: mac dinh (su dung de khoi phuc ve vi tri ban dau)
+               -, relative: khong lam thay doi bo cuc va di chuyen phan tu minh muon den mot vi tri moi
+               -, absolute:
+               -, fixed: co dinh
+
+     -, cac thuoc tinh cua position: (khong ap dung cho static vi no la mac dinh)
+               -, top:
+               -, right:
+               -, bottom:
+               -, left:
+               -, z-index: 1 // phan tu co z-index lon hon se nam len tren cac phan tu khac khi bi trung
+               -, inset: 10px // dai dien cho 4 huong
+
+
+
+Tóm tắt siêu ngắn gọn nhất
+
+display điều khiển cách phần tử chiếm không gian.
+visibility / opacity ẩn phần tử nhưng vẫn giữ vị trí khác nhau.
+margin-block = margin trên + dưới.
+calc() tính toán động.
+position dùng để di chuyển phần tử ra khỏi vị trí mặc định.
+Các loại position:
+static: mặc định
+relative: di chuyển theo vị trí cũ
+absolute: bám vào cha có position
+fixed: dính màn hình
+
+
++,    overscroll-behavior: none; //chặn toàn bộ hiệu ứng “kéo vượt giới hạn” (overscroll) của trình duyệt.
+
+
