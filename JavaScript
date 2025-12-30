@@ -1,0 +1,180 @@
+=================================== 27-12-2025=====================================
+
+js: javascript la mot ngon ngu lap trinh.
+-tao ra voi muc dich lam FE.
+-hien tai co the dung cho backend FE, BE, CICD, AI.
+
+UU DIEM: trien khai nhanh, de code.
+
+nhuoc diem:
+ +, khong tuong minh -> kho bao tri.
+ +, khi code sai -> khong biet ngay duoc.
+ +, khong ho tro OOP
+
+ de giai quyet cac nhuoc diem nay TS (typescript) ra doi.
+ -> co nhung net tuong dong voi java
+
+
+------------------------------JS------------------------------------
+
++, in ra man hinh.
+                 VD: console.log("Hello World")
+
+     -,co the in ra nhieu gia tri cac gia tri cac nhau boi dau phay
+       VD: console.log("Hello","1234")
+
+
+---------------------------- Bien(variable) trong JS-------------------------
+
+bien dung de luu gia tri:
+     -, ten bien khong duoc dat trung nhau.
+     -, cach khai bao:  const/let/var <ten bien>
+        vd: const a
+            let b
+            var c
+
+     -, cach khoi tao bien:  const/let/var <ten bien> = <gia tri>
+       vd: const a = 1
+           let b = 2
+           var c = 3
+
+
+===========  PHAN BIET const/let/var  ===========
+
+const: khong the chinh sua gia tri.
+Dùng khi:
+        -, Không gán lại biến
+        -, Giá trị cố định về mặt logic
+
+let: the chinh sua gia tri.
+    Dùng khi: Khi GIÁ TRỊ THAY ĐỔI
+        VD:
+           -, biến đếm
+           -, vị trí animation
+           -, state thay đổi theo thời gian
+
+    VD: let a = 1;      // khoi tao bien a co gia tri la 1
+         a = 2;         // cap nhat gia tri a co gia tri la 2
+         console.log(a);// in ra ket qua la 2
+
+
+var: chua dung de bi bug
+
+
+
+================ kieu du lieu (data type) ====================
+
+-, number:
+          +, int: 1,2,3,...
+          +, float: 1.2, 3.14,...
+
+-, bool
+
+         +, Quy tac dat ten: bat dau la is/are/have/has + adj/noun    (dat theo camel case)
+        VD:  is_Number = true/false
+
+
+-, string:
+        "abc"
+
+-, object
+    +, array:
+        [
+          [1,2,3],
+          [4,5,6]
+        ]
+
+
+    +, dictionary:
+          {
+              "a":"hello",
+              "b":"world"
+          }
+
+
+Data ojcet
+Undifined
+Null
+
+-, typeof: kiem tra kieu du lieu cua bien
+   VD: console.log(typeof(123)) -> number
+
+================================EP KIEU DU LIEU=========================
+
++, cach ep kieu:   <ten bien> = <kieu du lieu> (<ten bien>)
+
+
++, ep kieu tu number -> string
+    VD:
+        let a = 123
+        console.log(typeof a) -> number
+
+        a = String(a)
+        console.log(typeof a) -> string
+
+
+
++, trong toan logic:
+        -, chi co dung hoac sai
+        -, sai: false -> 0
+        -, dung: khong sai ( khac 0)
+
+
+
+========================= Array ===============
+
+khoi tao mang: const numbers = [1,2,3]    // mang 1 chieu
+console.log(numbers)                      // in ra [1,2,3]
+console.log(numbers[0])                   // in ra 1
+                         // lay gia tri cua mot phan tu trong mang.
+                         // numbers[0] so 0 la index trong mang.
+
+
+
+---------------------------------------------------------------------------------30-12-2025--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

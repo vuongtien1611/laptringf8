@@ -224,3 +224,72 @@ fixed: dính màn hình
 +,    overscroll-behavior: none; //chặn toàn bộ hiệu ứng “kéo vượt giới hạn” (overscroll) của trình duyệt.
 
 
+---------------------------------------Buoi 14-----------------------------------------------------------
+
+
+
++, display: flex;
+         dung de css cho the cha khac inline-block ( neu css cho inline-block thi se dung cho chinh the day)
++, flex-direction:
+                 -, flex-direction: row; (thuoc tinh mac dinh      // sap xep theo hang
+                 -, flex-direction: column;                        // sap xep theo cot
+                 -, flex-direction: column-reverse;                // đảo ngược thứ tự các phần tử theo trục tung (từ dưới lên trên).
+                 _, flex-direction: row-reverse;                   // đảo ngược thứ tự các phần tử theo trục hoanh (từ phai sang trai).
+
++, justify-content:
+
+  ------------------------------VIET TRONG THE CHA-------------------------------------------------------------------------------------------------------------
+                 -, justify-content: center;(left, right)
+                 -, justify-content: flex-end;      //  Dồn các item sang bên phải
+                 -, justify-content: flex-start;     // Các item dồn hết về bên trái (mặc định)
+                 -, justify-content: space-between; // them khoang trang giua cac phan tu (1 item se co 1 khoang trang sau -> o hai dau se khong co khoang trang)
+                 -, justify-content: space-around;  // Mỗi phần tử sẽ được bao quanh bởi khoảng cách bằng nhau.(1 item se co 1 khoang trang trc va sau -> o hai dau se co khoang trang nhung kich thuoc chi bang mot nua cac khoang trang giua cac item)
+                 -, justify-content: space-evenly;  // Khoảng cách giữa TẤT CẢ các vùng là đều nhau (kể cả hai bên ngoài)
+                 -, align-items: center;(flex-end, flex-start, left, right) // dinh dang giua cac phan tu theo cot (thuoc tinh mac dinh)
+                 -, align-items: flex-end; //
+                 _, align-items: flex-start; //
+                 _, align-items: stretch; //
+                 _, flex-wrap: wrap; // cho phép các phần tử con trong flexbox tự động xuống dòng khi không còn đủ không gian trong một hàng.
+                 _, flex-wrap: nowrap; // khong cho phép các phần tử con trong flexbox tự động xuống dòng khi không còn đủ không gian trong một hàng.
+
+  ------------------------------VIET TRONG THE CON------------------------------------------------------------------------------------------------------------
+                 -, flex-shrink: 0;   // KHÔNG được phép co nhỏ lại khi container thiếu diện tích.
+                                      // thay so 0 thanh 1 thi se bi co lai. so nay quyet dinh co lai gap bao nhieu lan
+
+
+                 -, flex-grow: 0.5;  // gian item theo kich thuoc container
+                                  (0 la kich thuoc mac dinh)
+
+***, flex-shrink va flex-grow uu tien cao hon width.
+
+
+
+
+----------------------------------------09-12-2025-----------------------------------------------
+
+
+BREAKPOINTS: la mot diem pha vo ket cau
+
++, @media (min-width: 1000px)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

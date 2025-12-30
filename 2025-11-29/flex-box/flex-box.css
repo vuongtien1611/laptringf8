@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+   flex-direction: column;
+
+    border: 1px solid red;
+}
+.box {
+    background-color: #349e0f;
+    width: 100px;
+    height: 100px;
+    color: white;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

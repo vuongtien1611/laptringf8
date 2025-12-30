@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+}
+
+.box{
+    border-bottom: 1px solid red;
+    padding-bottom: 50px;
+}
+.box > img{
+    Width: 150px;
+    Height: 150px;
+}
+.box .box-1{
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.box-1 nav ul{
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.box-1 > nav > ul > li > a{
+    text-decoration: none;
+    color: black;
+    padding: 0 20px;
+    font-size: 25px;
+}
