@@ -134,41 +134,319 @@ console.log(numbers[0])                   // in ra 1
 ---------------------------------------------------------------------------------30-12-2025--------------------------------------------------------------------------
 
 
+.length -> so phan tu trong mang.
+
+
+    // VD: const number = [4,3,2,5,1]
+           console.log(number.length)   -> 5 (phan tu)
+
+           const number = [4,3,2,5,1]
+           console.log(number[number.length-1])  -> 1 (phan tu cuoi cung)
+
+
+// VD: copie array: (chi ap dung cho object kieu)
+
+         const array = [1,2,3,4,5]     // array = 0x01 (toa do)
+
+         const coied_array = array    //coied_array = 0x01 (toa do)
+
+         coied_array[0] = 100        // phan tu dau tien cua toa do 0x01 la 100
+
+         console.log(coied_array)   // in ra [100,2,3,4,5]
+
+
+
+tham chieu: là copy "địa chỉ".  ap dung cho object array
+
+tham tri:   là copy "giá trị".  ap dung cho number, string, bool
+
+
+
+===============================================Toan tu (operator)=============================
+
+phep cong:
+
+        VD: let a = 1
+            let b = 2
+            console.log(a+b) -> 3 (muon tinh cac phep tinh khac thi thay dau + thanh dau mong muon(-, *, /))
+
+
+// luu y: voi String
+        VD: let a = "hello"
+            let b = "world"
+            console.log(a+b) -> helloworld
+
+            nhung khi cong String voi number thi co the luu y:
+            VD: let a = "123"
+                let b = 456
+                console.log(a+b) -> phep toan sai. -> js se tu dong chuyen b tu number sang string
+                va thuc hien phep toan: "123" + "456"
+                -> 123456
+
+                * voi phep cong String voi number thi auto chuyen sang String va thuc hien phep noi
+                * voi phep -, /, * thi uu tien chuyen bien thuc hien phep tinh(a,b) sang kieu du lieu number va thuc hien phep tinh nhu binh thuong
+                        VD: let a = "6"
+                            let b = 3
+                            console.log(a-b) -> 6-3 = 3
+
+                        VD: let a = "6as"
+                            let b = 3
+                            console.log(a*b) -> 6as*3 = loi:  NaN (not a number)
+
+//Bool
+
+        phep hoi / phep tuyen / phep phu dinh
+        and:"&&" / or:"||"    / not "!"
+
+        // phep hoi chi dung khi hai so cung dung.
+         VD: let a = true
+             let b = false
+             console.log(a&&b) -> false
+
+        // phep tuyen chi sai khi 2 so cung sai.
+
+             VD: let a = true
+                 let b = false
+                 console.log(a||b) -> true
+
+
+        // phep phu dinh: phu dinh cua true la false, phu dinh cua false la true.
+             VD:
+                let a = true
+                console.log(!a) -> false
+
+
+//======================================2026-01-03=========================================================//
+
+** cach viet js trong html:
+     -, kieu internal:
+        +, trong the body:
+            <script>
+            console.log("Hello World")
+            </script>
+
+     -, kieu external:
+        +, <script src="file.js">
+          </script>
+
+
+/* trong js co 8 kieu du lieu:
+    +, 7 kieu du lieu nguyen thuy:
+       -, number : let tuoi = 16;
+        -, String: let ten = "An";
+        -, bool : let daHoc = true;
+        -, null:  let trong = null;
+        -, undefined: let diem;
+        -, BigInt
+        -, Symbol
+    +, 1 kieu du lieu tham chieu:
+       -, object
+*/
+
+// dac diem cua kieu du lieu nguyen thuy : khong the thay doi gia tri
+// dac diem cua kieu du lieu tham chieu: co the thay doi gia tri
+
+    VD: kieu du lieu nguyen thuy
+        const name = "Nikhil"
+        console.log((name[0] = "M") )  -> in ra M
+        console.log(name[0])   -> in ra N
+
+    VD: kieu du lieu tham chieu:
+        const array = [1,2,3]
+        console.log((array[0] = 100)) -> in ra 100
+        console.log(array[0]) -> in ra 100
+
+
+
+*/ cau lenh re nhanh(cau dieu kien)
+
+  1, if, else:
+       VD:
+           const age = 18
+            if(age >= 18){
+            console.log("ban da la mot cong dan")
+            }
+            else{
+             console.log("ban chua du 18 tuoi")
+            }
+  2, else if:
+       VD:
+           const age = 18
+            if(age >= 18){
+            console.log("ban da la mot cong dan")
+            }
+            else if(age >= 16 && age < 18){
+            console.log("ban la tre vi thanh nien")
+            }
+            else{
+             console.log("ban chua du 18 tuoi")
+            }
+
+  3, switch:
+       VD:
+           let day
+            switch(day){   // (day) la dieu kieu so sanh voi cac gia tri trong case
+                case "monday":
+                    console.log("ngay thu 2")
+                    break;
+                case "tuesday":
+                    console.log("ngay thu 3")
+                    break;
+                default:
+                    console.log("khong co ngay nay")
+            }
+
+  4, ternary operator (? :)
+       VD:
+           const age = 18
+           console.log(age >= 18 ? "ban da la mot cong dan" : "ban chua du 18 tuoi")
+                                     (neu dieu kien dung)       (neu dieu kien sai)
+
+
+/* Toan tu.
+
+    1, toan tu so hoc: +,-,*,/,%,**, ++, --
+
+        +, toan tu (++) tang gia tri cua toan hang len 1 don vi
+        +, toan tu (--): giam gia tri cua toan hang len 1 don vi
+
+    *, Điểm khác nhau nằm ở THỜI ĐIỂM tăng/giảm.
+        -, DÙNG SAU (HẬU TỐ)
+             x++ | x--
+             Dùng giá trị hiện tại trước,
+             Tăng / giảm sau khi dùng xong
+
+        VD:
+            let x = 5;                                  let x = 5;
+            let y = x++;                                let z = ++x;
+
+            console.log(y); // 5                          console.log(z); // 6
+            console.log(x); // 6                          console.log(x); // 6
+
+
+
+    2, toan tu so sanh: >, <, >=, <=, ==, ===, !=, !==
+
+        +, == (So sánh lỏng – loose equality)
+
+            Chỉ so sánh GIÁ TRỊ
+            Tự động ép kiểu (type coercion)
+
+                Ví dụ
+                5 == "5"      // true
+                true == 1     // true
+                false == 0    // true
+                null == undefined // true
+
+
+        +, === (So sánh chặt – strict equality)
+
+               So sánh CẢ GIÁ TRỊ + KIỂU DỮ LIỆU
+               KHÔNG ép kiểu
+
+                Ví dụ
+                    5 === "5"     // false
+                    true === 1    // false
+                    null === undefined // false
+
+        -> nen dung === cho phep so sanh kieu du lieu
+            Vd: number / 2 === 0 && number / 3 === 0
+
+
+
+        +, != (So sánh lỏng – loose inequality)
+
+           Chỉ so sánh GIÁ TRỊ
+           Có ép kiểu ngầm
+
+           Ví dụ
+           5 != "5"      // false
+           0 != false    // false
+           null != undefined // false
+
+
+            JS ép kiểu trước rồi mới so sánh
+            Giá trị bằng nhau → không khác
+
+        +, !== (So sánh chặt – strict inequality)
+
+            So sánh CẢ GIÁ TRỊ + KIỂU DỮ LIỆU
+            KHÔNG ép kiểu
+
+           Ví dụ
+           5 !== "5"     // true
+           0 !== false   // true
+           null !== undefined // true
+
+     -> nen dung !== cho phep so sanh kieu du lieu
+
+
+    3, toan tu logic: &&, ||, !
 
 
 
 
+//====================HAM TRONG JS========================//
+
+*/ muc dich sinh ra de tai su dung code.
+
+1, Ham khai bao (Declare function):
+    +, cu phap:
+        function tenHam() {
+            // code xử lý
+        }
+
+         tenHam();   // loi goi ham
 
 
+         VD: function sayHello(){
+             console.log("Hello World")
+         }
+
+         sayHello() -> in ra Hello World
+
+2, Ham bieu thuc
+    +, cu phap:
+        function tenHam(tham so 1, tham so 2) {
+            return tham so 1 + tham so 2;
+        }
+
+        Vd:
+         const Sum = function (a,b){
+            return a+b;
+        }
+
+        console.log(sum(1,2)) -> in ra 3
+
+3, ham mui ten
+
+   VD:
+       const sum = (a,b) =>{
+        return a+b;
+       }
+    console.log(sum(1,2)) -> in ra 3
 
 
+4, Ham trieu hoi ham ngay lap tuc (IIFE)
 
+Vd:
+    (function hello(){
+        console.log("Hello World")
+    })()
 
+5, ham vo danh: la ham khong co ten
+dung de dat vao trong IIFE
 
+Vd:
+    (function (){
+        console.log("Hello World")
+    }
 
+6, CallBack: ham duoc dung nhu mot tham so trong mot ham khac
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-, dieu kien de tro thanh mot callback:
+    +, la ham
+    +, duoc truyen nhu mot tham so trong ham khac.
 
 
 
