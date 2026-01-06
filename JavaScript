@@ -448,6 +448,109 @@ Vd:
     +, la ham
     +, duoc truyen nhu mot tham so trong ham khac.
 
+VD:
+    function sum(a,b){
+        return a+b
+    }
+    function calc(callback){
+       console.log (callback(10,20))
+    }
+
+    calc(sum)
+
+//===================================06/01/2026========================================//
+(noi ki ve cac ham cac viet ham trong js)
+
+    const person = {
+        name: "Jerry",
+        age: 18,
+        girlFriend: undefined,
+        address: "10 tran phu"
+    }
+    // console.log(person.address)   ==    console.log(person["address"])  "Hai cach nay cho ra ket qua giong nhau"
+
+    console.log(person[ "address"])
+
+*/ this keyword:
+
+    ** tu khoa this trong js khong lam viec voi ham mui ten.
+
+    VD:
+
+    const person = {
+            Firstname: "Jerry",
+            Lastname: "Nguyen",
+            age: 18,
+            girlFriend: undefined,
+            address: "10 tran phu",
+            name: function () =>{
+                return this.Firstname + " " + this.Lastname
+            }
+        }
+      console.log(person.name()) -> in ra: Undified Undefined
+
+
+
+    const person = {
+        Firstname: "Jerry",
+        Lastname: "Nguyen",
+        age: 18,
+        girlFriend: undefined,
+        address: "10 tran phu",
+        name: function (){
+            return this.Firstname + " " + this.Lastname
+        }
+    }
+
+    console.log(person.name()) -> in ra: Jerry Nguyen
+
+
+** Trong JavaScript, this tham chiếu đến đối tượng sở hữu phương thức đang được gọi.
+    VD:
+    const person = {
+        Firstname: "Jerry",
+        Lastname: "Nguyen",
+        age: 18,
+        address: "10 tran phu",
+
+        getName: function () {
+            return this.Firstname + " " + this.Lastname;
+        },
+
+        girlFriend: {
+            Firstname: "Anna",
+            Lastname: "Tran",
+            age: 17,
+            address: "20 le loi",
+            getName: function () {
+                return this.Firstname + " " + this.Lastname;
+            }
+        }
+    };
+
+    console.log(person.getName());    -> in ra: Jerry Nguyen
+    console.log(person.girlFriend.getName()); -> in ra: Anna Tran
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
