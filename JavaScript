@@ -532,6 +532,29 @@ VD:
     console.log(person.girlFriend.getName()); -> in ra: Anna Tran
 
 
+//==========================10-01-2026==================================//
+vòng lặp (Loop)
+chức năng: thực hiện nhiều lần cho 1 công việc
+
+các loại Loop:
+    -, for in
+    -, for of
+    -, while
+    -, forEach
+
+
+    advance:
+    -,map
+    -,filter
+    -,reduce
+
+
+*/ continue
+
+continue dùng trong vòng lặp (for, while, do...while) để:
+
+         Bỏ qua phần code còn lại của vòng lặp hiện tại
+         Nhảy sang vòng lặp tiếp theo
 
 
 
