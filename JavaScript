@@ -558,6 +558,27 @@ continue dùng trong vòng lặp (for, while, do...while) để:
 
 
 
+//======================================13-01-2026========================================//
+
+*/ Tinh tham chieu (Reference)
+
+-, trong vong for tinh tham chieu van duoc giu nguyen
+    VD:    const students =
+             [
+                 {id: 1, name: "Jerry"}
+                 ,{id: 2, name: "Tom"}
+                 ]
+
+        for( let student of students ){
+            console.log(student)
+            student.name = "Jack"
+        }
+
+        console.log(students)
+
+
+-,
+
 
 
 
