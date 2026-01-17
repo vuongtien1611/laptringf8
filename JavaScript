@@ -576,8 +576,23 @@ continue dùng trong vòng lặp (for, while, do...while) để:
 
         console.log(students)
 
+//======================================17-01-2026========================================//
 
--,
+vong lap while:
+    cu phap:
+    while(condition){
+        code
+    }
+
+    VD:
+     let i = 0
+     while(i<10){
+        console.log(i)
+        i++
+    }
+    -> in ra 0,1,2,3,4,5,6,7,8,9
+
+    */ luu y: neu code khong co dieu kien ket thuc Loop(i++) thi vong lap se lap vo tan
 
 
 
