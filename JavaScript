@@ -596,6 +596,50 @@ vong lap while:
 
 
 
+//======================================20-01-2026========================================//
+
+
+
+
+//======================================24-01-2026========================================//
+
+tai sao pjai hoc lap trinh huong doi tuong?
+    -, hoc cach tu duy giai quyet van de
+
+
+oop: mo hinh hoa cac thanh phan trong mot ung dung
+    VD:
+        Game lien quan:
+            nhan vat: -, trieu van,
+                      -, lu bo
+                      -, Raz, ...
+            ten:
+            trang phuc:
+            .......
+
+          tao class <- interface
+
+
+OOP:
+    -, tinh ke thua
+    -, tinh da hinh
+    -, tinh dong goi
+    -, tinh tru tuong
+------------------------------------------------------------------
+
+-, tinh ke thua:
+    class / interface con se mang day du tinh chat cua class cha
+-------------------------------------------------------------------
+-, tinh da hinh:
+    class con se mang day du thuoc tinh cua class cha
+    nhung co nhieu hinh trang khac nhau
+
+Super -> goi cac thuoc tinh cua class cha "(super.method())"
+
+------------------------------------------------------------------
+
+-, tinh truu tuong:
+    la xac dinh cac thuoc tinh can co cho doi tuong va tao ban thiet ke cho doi tuong do
 
 
 
