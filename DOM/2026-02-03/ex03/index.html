@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>ex03</title>
+</head>
+<body>
+<main></main>
+
+<script>
+    const renderCategories = () =>{
+        const categories = [
+            'quan ao',
+            'thoi trang',
+            'phu kien'
+            , 'thuc pham'
+        ]
+        // get main element
+
+        const mainElement = document.querySelector('main')
+
+        // create ul element
+        const ulElement = document.createElement('ul')
+
+        categories.forEach(category => {
+            const liElement = document.createElement('li')
+            liElement.innerText = category
+            ulElement.append(liElement)
+        } )
+        mainElement.append(ulElement)
+
+    }
+
+    renderCategories()
+</script>
+</body>
+</html>

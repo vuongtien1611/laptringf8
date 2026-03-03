@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="myBtn">Click me</button>
+<p id="text">Đang tắt</p>
+
+<script>
+  const Btn = document.getElementById('myBtn')
+  const text = document.getElementById('text')
+
+  Btn.addEventListener('click', () => {
+
+          if(text.innerText === 'Đang tắt'){
+              text.innerText = 'Đang bật';
+          }
+          else{
+              text.innerText = 'Đang tắt'
+          }
+  })
+</script>
+</body>
+</html>

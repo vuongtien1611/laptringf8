@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="search">Search</label>
+<input type="text" id="search" name="search">
+
+
+<script>
+  const inputE = document.getElementById('#search');
+
+  inputE.addEventListener('input', (e) => {
+    console.log(e.target.value);
+  })
+</script>
+</body>
+</html>

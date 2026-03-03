@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <!--    <table border="1" cellspacing="0" width="100%">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--            <th>code</th>-->
+    <!--            <th>Customer</th>-->
+    <!--            <th>Product</th>-->
+    <!--            <th>amount</th>-->
+    <!--            <th>status</th>-->
+    <!--            <th>action</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr>-->
+    <!--            <td>001</td>-->
+    <!--            <td>tran xuan bang</td>-->
+    <!--            <td>iphone 13</td>-->
+    <!--            <td>10000</td>-->
+    <!--            <td>Ok</td>-->
+    <!--            <td>-->
+    <!--                <button>Edit</button>-->
+    <!--                <button>Delete</button>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+
+    <!--        <tr>-->
+    <!--            <td>002</td>-->
+    <!--            <td>vuong duc tien</td>-->
+    <!--            <td>laptop</td>-->
+    <!--            <td>10246</td>-->
+    <!--            <td>NG</td>-->
+    <!--            <td>-->
+    <!--                <button>Edit</button>-->
+    <!--                <button>Delete</button>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+
+    <!--        <tr>-->
+    <!--            <td>001</td>-->
+    <!--            <td>tran xuan bang</td>-->
+    <!--            <td>iphone 13</td>-->
+    <!--            <td>10000</td>-->
+    <!--            <td>Ok</td>-->
+    <!--            <td>-->
+    <!--                <button>Edit</button>-->
+    <!--                <button>Delete</button>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
+
+
+    <div id="table"></div>
+</main>
+<script>
+    const data = [
+        {code: "001", customer: "tran xuan bang", product: "iphone 13", amount: 10000, status: "Ok"},
+        {code: "002", customer: "vuong duc tien", product: "laptop", amount: 10246, status: "NG"},
+        {code: "001", customer: "tran xuan bang", product: "iphone 13", amount: 10000, status: "Ok"},
+        {code: "002", customer: "vuong duc tien", product: "laptop", amount: 10246, status: "NG"},
+    ]
+
+    const table = document.getElementById("table")
+
+    const template = document.createElement("table")
+    template.setAttribute("border", "1")
+    template.setAttribute("cellspacing", "0")
+    template.setAttribute("width", "100%")
+
+
+    const thead = document.createElement("thead")
+    const tbody = document.createElement("tr")
+
+    const headers = ['code', 'Customer', 'Product', 'amount', 'status', 'action']
+
+    headers.forEach(text => {
+        const th = document.createElement("th")
+        th.innerText = text
+        thead.append(th)
+    })
+
+    thead.append(tbody)
+    template.append(thead)
+
+
+    const render = document.createElement("tbody")
+    data.forEach(item => {
+        const tr = document.createElement("tr")
+    //     tr.innerHTML = `
+    // <td>${item.code}</td>
+    // <td>${item.customer}</td>
+    // <td>${item.product}</td>
+    // <td>${item.amount}</td>
+    // <td>${item.status}</td>
+    // <td>
+    //     <button>Edit</button>
+    //     <button>Delete</button>
+    // </td>`
+    //     render.append(tr)
+
+
+        Object.keys(item).forEach(key => {
+           const trE = document.createElement("tr")
+           Object.keys(item).forEach(key => {
+               const tdE = document.createElement("td")
+               tdE.innerText = item[key]
+               trE.append(tdE)
+           })
+            const tdE = document.createElement("td")
+            tdE.innerHTML = `
+            <button>Edit</button>
+            <button>Delete</button>`
+
+            trE.append(tdE)
+            render.append(trE)
+
+        })
+
+    })
+
+    template.append(render)
+    table.append(template)
+
+</script>
+</body>
+</html>

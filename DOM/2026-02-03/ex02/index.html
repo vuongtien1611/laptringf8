@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex02</title>
+</head>
+<body>
+<header></header>
+<main></main>
+<footer></footer>
+
+<script>
+    const mainE = document.querySelector('main'); // lay the main
+
+    let htmlTmp = '<p>day la p</p>'
+
+    for(let i = 0; i < 1000000; i++){
+        htmlTmp += '<p>day la p</p>'
+        // const pE = document.createElement('p')
+        // pE.innerText = 'day la p'
+        // mainE.append(pE)
+    }
+    mainE.innerHTML = htmlTmp;
+
+    const pE = document.createElement('p');
+    pE.innerText = 'day la van ban';
+
+    mainE.append(pE);
+</script>
+</body>
+</html>

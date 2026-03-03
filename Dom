@@ -1,0 +1,423 @@
+------------------- 2026-02-03 -----------------------------
+
+I. DOM LÀ GÌ?
+1. DOM (Document Object Model) là gì?
+
+DOM là mô hình biểu diễn trang HTML dưới dạng cây đối tượng.
+
+Mỗi thẻ HTML = một node (đối tượng).
+
+Khi trình duyệt load HTML, nó tạo ra cây như sau:
+
+    window
+     └── document
+           └── html
+                 ├── head
+                 └── body
+
+Nghĩa là: JavaScript không thao tác trực tiếp HTML, mà thao tác trên cây DOM này.
+
+2. document là gì?
+
+document là đối tượng đại diện cho toàn bộ trang HTML.
+
+Là điểm bắt đầu để truy cập DOM.
+
+Ví dụ:
+
+document.title
+document.body
+document.getElementById("myBtn")
+II. LẤY PHẦN TỬ TRONG DOM (SELECT ELEMENT)
+1. getElementById
+    Lấy 1 phần tử theo id.
+        vd:
+            <p id="title">Hello</p>
+
+            <script>
+            const element = document.getElementById("title")
+            console.log(element)
+            </script>
+
+  Luôn trả về 1 phần tử (hoặc null nếu không tồn tại).
+
+2. getElementsByTagName
+
+    Lấy nhiều phần tử theo tên thẻ.
+        vd:
+            <p>A</p>
+            <p>B</p>
+            <p>C</p>
+
+            <script>
+            const list = document.getElementsByTagName("p")
+            console.log(list)
+            </script>
+
+⚠ Trả về HTMLCollection (giống mảng nhưng không phải mảng thật).
+
+3. getElementsByClassName
+
+    Lấy phần tử theo class.
+        vd:
+            <p class="text">Hello</p>
+            <p class="text">World</p>
+
+            <script>
+            const list = document.getElementsByClassName("text")
+            console.log(list)
+            </script>
+
+4. querySelector (Khuyên dùng hiện đại)
+
+    Lấy 1 phần tử đầu tiên theo CSS selector.
+        vd:
+            document.querySelector("#myBtn")
+            document.querySelector(".box")
+            document.querySelector("div p")
+
+    👉 Trả về phần tử đầu tiên khớp điều kiện.
+
+    vd:
+        <p class="pE">day la the p dau tien</p>
+        <p class="pE">day la the p thu hai</p>
+
+        <script>
+            const pE = document.querySelector('.pE')
+            pE.style.color = 'red'
+        </script>
+
+5. querySelectorAll
+
+    Lấy tất cả phần tử theo CSS selector.
+        vd:
+            <p class="pE">day la the p dau tien</p>
+            <p class="pE">day la the p thu hai</p>
+
+            <script>
+                const pE = document.querySelectorAll('.pE')
+
+                pE.forEach(p =>{
+                    p.innerText = 'Hello DOM'
+                    p.style.backgroundColor = 'red'
+                })
+
+            </script>
+
+👉 Trả về NodeList (có thể forEach được).
+
+III. THAY ĐỔI NỘI DUNG
+
+Giả sử: const e = document.getElementById("text")
+
+1. innerHTML
+
+    Cập nhật nội dung có chứa HTML.
+        vd:
+            <p id="text">day la the p</p>
+            <script>
+                const e = document.getElementById("text")
+                e.innerHTML = '<a href="https://youtube.com">Di den youtube</a>' +
+                    '<p>da thay doi html</p>'
+
+            </script>
+
+👉 Có thể thêm thẻ HTML.
+
+2. innerText
+
+Chỉ cập nhật văn bản.
+    vd:
+        <p id="text">day la the p</p>
+        <script>
+            const e = document.getElementById("text")
+            e.innerText = 'Hello World!'
+        </script>
+
+👉 Không hiểu HTML, chỉ hiển thị text.
+
+3. textContent (khuyên dùng)
+e.textContent = "Hello World"
+
+👉 Nhanh và an toàn hơn innerHTML(thay doi text ngay ca khi display: none ma khong lam hien text) .
+
+IV. TẠO VÀ THÊM PHẦN TỬ
+1. createElement
+
+Tạo phần tử mới trong bộ nhớ.
+
+const li = document.createElement("li")
+
+👉 Chưa hiển thị trên trang.
+
+2. append
+
+Thêm phần tử vào cuối.
+
+const ul = document.getElementById("list")
+ul.append(li)
+3. appendChild
+ul.appendChild(li)
+
+ Chỉ thêm được 1 node.
+
+V. LÀM VIỆC VỚI CLASS
+1. classList.add
+li.classList.add("active")
+2. classList.remove
+li.classList.remove("active")
+3. classList.toggle
+li.classList.toggle("completed")
+
+Nếu có → xoá
+Nếu chưa có → thêm
+
+4. classList.contains
+if (li.classList.contains("completed")) {
+    console.log("Đã hoàn thành")
+}
+VI. SỰ KIỆN (EVENT)
+1. addEventListener
+
+Gắn sự kiện cho phần tử.
+
+Cú pháp:
+
+element.addEventListener("event", function)
+
+Ví dụ:
+
+btn.addEventListener("click", function(){
+    alert("Bạn vừa click")
+})
+
+👉 Khi click thì chạy code bên trong.
+
+VII. EVENT OBJECT
+1. event (e)
+ul.addEventListener("click", function(e){
+    console.log(e)
+})
+
+👉 e chứa thông tin về sự kiện.
+
+2. target
+
+Phần tử thực sự bị click.
+
+ul.addEventListener("click", function(e){
+    console.log(e.target)
+})
+
+👉 Quan trọng khi dùng Event Delegation.
+
+3. tagName
+
+Tên thẻ của phần tử.
+
+if(e.target.tagName === "SPAN"){
+    console.log("Bạn click vào span")
+}
+
+⚠ Luôn viết IN HOA.
+
+VIII. XOÁ PHẦN TỬ
+1. remove
+li.remove()
+
+👉 Xoá chính nó khỏi DOM.
+
+2. parentElement
+
+Lấy phần tử cha.
+
+e.target.parentElement.remove()
+
+👉 Lấy cha rồi xoá cha.
+
+IX. VÍ DỤ MINI TODO HOÀN CHỈNH
+const input = document.getElementById("input")
+const btn = document.getElementById("btn")
+const ul = document.getElementById("list")
+
+btn.addEventListener("click", () => {
+    if (input.value.trim()) {
+        const li = document.createElement("li")
+        li.textContent = input.value
+        ul.append(li)
+        input.value = ""
+    }
+})
+
+ul.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("completed")
+    }
+})
+
+👉 Click Add → thêm task
+👉 Click vào task → gạch ngang
+
+
+-----------------2026-03-03----------------
+
+                bất đồng bộ trong js
+
+js la ngon ngu đơn luồng(tại một thời điểm chỉ sử lý đc 1 công việc)
+trong trường hợp cần xủ lý nhiều cv JS không tự xử lý song song.
+Thay vào đó:  Nó nhờ môi trường runtime (trình duyệt hoặc Node.js) xử lý giúp.
+
+    vd:
+        console.log("cong viec 1");
+
+        setTimeout(() => {
+          console.log("Done");
+        }, 2000);
+
+        console.log("cong viec 2");
+
+setTimeout: dung de khi khach hang vao trang web cua minh thi vai giay sau hien len form de khach hang nhap thong tin va gui ve cho minh
+
+
+    Điều gì sẽ xảy ra?
+
+    🟢 Bước 1: JS chạy dòng 1
+    cong viec 1
+
+    🟡 Bước 2: gặp setTimeout
+
+    JS không chờ 2 giây
+
+    Nó đưa callback sang Web APIs
+
+    Tiếp tục chạy xuống dưới
+
+    🟢 Bước 3: chạy dòng cuối
+    cong viec 2
+    🔵 Sau 2 giây
+
+    Web APIs đẩy callback vào Queue
+
+    Event Loop thấy Call Stack rỗng
+
+    Đẩy callback vào stack
+
+    In ra:
+
+    Done
+    🧠 Output cuối cùng sẽ là:
+    cong viec 1
+    cong viec 2
+    Done
+    ⚠ Vì sao Done luôn chạy sau?
+
+    Vì:
+
+    setTimeout là macrotask
+
+    Nó phải đợi stack rỗng mới được chạy
+
+    🔥 Flow thực tế:
+    Call Stack:
+    log1 → setTimeout → log2
+
+    Web APIs:
+    (setTimeout đếm 2 giây)
+
+    Queue:
+    callback
+
+    Event Loop:
+    đẩy callback vào stack
+
+
+
+setInterval dùng để lặp lại một đoạn code sau mỗi khoảng thời gian cố định.
+    vd:
+        let count = 0;
+
+        const intervalId = setInterval(() => {
+          count++;
+          console.log("Count:", count);
+        }, 1000);
+
+    ket qua:
+        Count: 1
+        Count: 2
+        Count: 3
+        ...
+
+        Mỗi 1 giây chạy lại 1 lần.
+
+-,co 3 cach viet bat dong bo
+    1,Callback (cách cũ): Truyền một hàm vào làm tham số, khi xong việc thì gọi lại.
+        vd:
+            function getData(callback) {
+              setTimeout(() => {
+                callback("Data loaded");
+              }, 1000);
+            }
+
+            getData((result) => {
+              console.log(result);
+            });
+
+        Nhược điểm: Dễ bị callback hell
+            vd:
+                getUser((user) => {
+                  getPosts(user.id, (posts) => {
+                    getComments(posts[0].id, (comments) => {
+                      console.log(comments);
+                    });
+                  });
+                });
+                    Code lồng sâu, khó đọc.
+
+    2, Promise: Giải quyết callback hell bằng .then() và .catch().
+        vd:
+            function getData() {
+              return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  resolve("Data loaded");
+                }, 1000);
+              });
+            }
+
+            getData()
+              .then((result) => {
+                console.log(result);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+
+        Có thể chain:
+
+            getUser()
+              .then(user => getPosts(user.id))
+              .then(posts => getComments(posts[0].id))
+              .then(comments => console.log(comments))
+              .catch(err => console.log(err));
+
+    3, Async / Await (hiện đại nhất): Viết giống code đồng bộ nhưng vẫn async.
+        vd:
+            function getData() {
+              return new Promise(resolve => {
+                setTimeout(() => resolve("Data loaded"), 1000);
+              });
+            }
+
+            async function run() {
+              try {
+                const result = await getData();
+                console.log(result);
+              } catch (err) {
+                console.error(err);
+              }
+            }
+
+            run();
+
+
+
+

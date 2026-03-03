@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="searchStr">Search Str</label>
+<input id="searchStr" name="searchStr">
+
+<ul id="customer-list"></ul>
+
+<script>
+    /*
+    * 1. list 10 cst nay len -> ul - li
+    * 2. khi nhap vao the input -> loc ra nhung khach hang co ten tuong du
+    * vd:
+    *   trong the input nhap chu "Th"
+    *   cst 2, 5, 7, 10 se dc hien
+    * */
+    const customers = [
+        { "id": 1, "name": "Nguyễn Văn An" },
+        { "id": 2, "name": "Trần Thị Bình" },
+        { "id": 3, "name": "Lê Hoàng Cường" },
+        { "id": 4, "name": "Phạm Minh Đức" },
+        { "id": 5, "name": "Võ Thị Hạnh" },
+        { "id": 6, "name": "Đặng Quốc Huy" },
+        { "id": 7, "name": "Bùi Thanh Long" },
+        { "id": 8, "name": "Hoàng Ngọc Mai" },
+        { "id": 9, "name": "Đỗ Anh Quân" },
+        { "id": 10, "name": "Nguyễn Thảo Vy" }
+    ]
+
+    const inputE = document.querySelector('#searchStr')
+    const ulE = document.querySelector('#customer-list')
+
+    // Ham hien danh sach
+
+    function render(list){
+        ulE.innerHTML = ''  // xoa danh sach cu
+        for(let i= 0; i<list.length;i++){
+            const li = document.createElement('li')
+            li.innerText = list[i].name
+            ulE.appendChild(li)
+        }
+    }
+
+    render(customers)
+
+    inputE.addEventListener('input', function (e) {
+        const keyWord = e.target.value.toLowerCase()
+        const result = []
+
+        for (let i = 0; i < customers.length; i++) {
+            const name = customers[i].name.toLowerCase()
+
+            if (name.indexOf(keyWord) !== -1) {
+                result.push(customers[i])
+            }
+        }
+        render(result)
+    })
+
+
+
+</script>
+</body>
+</html>

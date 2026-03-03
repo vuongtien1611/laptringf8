@@ -1,0 +1,88 @@
+<!--bam nut doi mau chu-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .red{
+      color: red;
+    }
+    .green{
+      color: green;
+    }
+    .yellow{
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+<h1> hoc lap trinh</h1>
+
+<p>ban muon chu mau gi</p>
+<!--cach 1-->
+<!--<button id="red-btn">do</button>-->
+<!--<button id="green-btn">xanh</button>-->
+<!--<button id="yellow-btn">vang</button>-->
+
+<button target-color="red">do</button>
+<button target-color="yellow">vang</button>
+<button target-color="green">xanh</button>
+
+
+<script>
+
+  // cach 1: doi thang mau
+
+  // const redBtn = document.querySelector('#red-btn')
+  // const greenBtn = document.querySelector('#green-btn')
+  // const yellowBtn = document.querySelector('#yellow-btn')
+  //
+  // redBtn.addEventListener('click', () => {
+  //   const h1 = document.querySelector('h1')
+  //   h1.style.color = 'red'
+  // })
+  //
+  //
+  // greenBtn.addEventListener('click', () => {
+  //   const h1 = document.querySelector('h1')
+  //   h1.style.color = 'green'
+  // })
+  //
+  //
+  // yellowBtn.addEventListener('click', () => {
+  //   const h1 = document.querySelector('h1')
+  //   h1.style.color = 'yellow'
+  // })
+
+  // caxh 2: tranh lap code
+    const h1 = document.querySelector('h1');
+
+    function changeColor(color) {
+    h1.style.color = color;
+  }
+
+    document.querySelector('#red-btn')
+    .addEventListener('click', function () {
+    changeColor('red');
+  });
+
+    document.querySelector('#green-btn')
+    .addEventListener('click', function () {
+    changeColor('green');
+  });
+
+    document.querySelector('#yellow-btn')
+    .addEventListener('click', function () {
+    changeColor('yellow');
+  });
+
+
+
+
+
+
+</script>
+</body>
+</html>

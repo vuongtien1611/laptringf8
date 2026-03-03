@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // promise
+
+    const promise = new Promise((resolve, reject) => {
+        console.log('hanh dong 1')
+        reject('thuc hien that bai')
+
+    })
+
+    promise
+    .then((result) =>{
+        console.log('hanh dong 2')
+    })
+    .then((result) =>{
+        console.log('hanh dong 3')
+    })
+    .catch((err) =>{
+        console.log('loi:', err)
+    })
+    .finally(()=>{
+        console.log('hanh dong cuoi cung')
+    })
+
+
+
+    //Async / Await
+
+    const main = async () => {
+        console.log('hanh dong 1')
+    }
+    const async = async () => {
+        await main()
+        console.log('hanh dong 2')
+    }
+
+
+</script>
+</body>
+</html>

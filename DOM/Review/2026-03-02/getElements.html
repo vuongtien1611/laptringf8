@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p class="pE">day la the p dau tien</p>
+<p class="pE">day la the p thu hai</p>
+
+<script>
+
+    //querySelector
+    const pE = document.querySelector('.pE')
+    pE.style.color = 'red' // doi mau .pE dau tien
+
+    // querySelectorAll
+    const pE = document.querySelectorAll('.pE')
+
+    pE.forEach( p => {
+        p.innerText = 'Hello DOM'
+        p.style.backgroundColor = 'red'  // bien content cua .pE thanh 'Hello DOM' va bg thanh mau do
+    })
+
+
+
+</script>
+</body>
+</html>
