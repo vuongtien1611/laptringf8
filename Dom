@@ -419,5 +419,409 @@ setInterval dùng để lặp lại một đoạn code sau mỗi khoảng thời
             run();
 
 
+------------------------------07-03-2026----------------------
+
+cơ chế hoạt động bên trong (JavaScript runtime)
+link website: https://jsflow.info/
+
+I, khái niệm đồng bộ và bất đông bộ
+      -, Đồng bộ (Synchronous) là gì?
+
+             Đồng bộ nghĩa là: Code chạy từng dòng một, dòng sau phải đợi dòng trước chạy xong.
+
+            vd:
+                console.log("A");
+                console.log("B");
+                console.log("C");
+
+                Quá trình chạy:
+                A
+                ↓
+                B
+                ↓
+                C
+
+                Output:
+                A
+                B
+                C
+
+                Đây gọi là blocking execution (chạy tuần tự).
+
+      -, Bất đồng bộ (Asynchronous) là gì
+
+            Bất đồng bộ nghĩa là:
+            Một số tác vụ không cần chờ hoàn thành, JavaScript sẽ chạy tiếp code phía dưới.
+
+                Ví dụ:
+
+                console.log("A");
+
+                setTimeout(() => {
+                  console.log("B");
+                }, 2000);
+
+                console.log("C");
+
+            3, Phân tích từng bước
+            Bước 1 – chạy code đồng bộ
+            console.log("A")
+
+            Output:
+            A
+            Bước 2 – gặp setTimeout
+            setTimeout(...)
+
+            JavaScript không chạy callback ngay, mà:
+
+            Call Stack → Web APIs
+
+            Timer bắt đầu đếm 2000ms.
+
+            Bước 3 – tiếp tục chạy code phía dưới
+            console.log("C")
+
+            Output:
+
+            C
+            Bước 4 – sau 2 giây
+
+            Callback của setTimeout được đưa vào Task Queue.
+
+            Bước 5 – Event Loop
+
+            Event Loop kiểm tra:
+
+            Call Stack rỗng
+
+            → đưa callback vào stack.
+
+            Bước 6 – chạy callback
+            console.log("B")
+
+            Output cuối:
+
+            A
+            C
+            B
+            4️⃣ Sơ đồ hoạt động
+            console.log("A")   → Call Stack
+            setTimeout         → Web APIs
+            console.log("C")   → Call Stack
+            timer done         → Task Queue
+            Event Loop         → Call Stack
+            console.log("B")
+            5️⃣ So sánh đồng bộ và bất đồng bộ
+            Đồng bộ	Bất đồng bộ
+            Chạy tuần tự	Không cần chờ
+            Blocking	Non-blocking
+            Code chạy từ trên xuống	Có Event Loop
+            Ví dụ: console.log()	setTimeout(), fetch()
+            6, Ví dụ so sánh rõ nhất
+            Đồng bộ
+            console.log("1");
+            console.log("2");
+            console.log("3");
+
+            Output
+
+            1
+            2
+            3
+            Bất đồng bộ
+            console.log("1");
+
+            setTimeout(() => {
+              console.log("2");
+            }, 0);
+
+            console.log("3");
+
+            Output
+
+            1
+            3
+            2
+            7, những hàm bất đồng bộ phổ biến
+
+            Trong JavaScript:
+
+            setTimeout()
+            setInterval()
+            fetch()
+            Promise
+            async / await
+            DOM events
+
+        ✅ Tóm tắt dễ nhớ
+
+        Đồng bộ:
+        code chạy lần lượt
+
+        Bất đồng bộ:
+        code chạy tiếp
+        task async xử lý sau
+
+
+II, các quy tắc hoạt động:
+  -, Quy tắc 1: Code đồng bộ (Synchronous) chạy trước
+        JavaScript luôn chạy code từ trên xuống dưới trong Call Stack trước khi xử lý bất đồng bộ.
+
+          Ví dụ:
+          console.log("A");
+          console.log("B");
+          console.log("C");
+
+          Output:
+          A
+          B
+          C
+  -, Quy tắc 2: Async task được gửi ra ngoài Call Stack
+
+      Các tác vụ bất đồng bộ không chạy ngay, mà được gửi đến Web APIs.
+
+      Ví dụ các async task:
+          setTimeout
+          setInterval
+          fetch
+          DOM event
+          Promise
+
+      Ví dụ:
+          setTimeout(() => console.log("Hello"), 1000);
+          Timer được xử lý ở Web APIs.
+
+  -, Quy tắc 3: Sau khi xong → đưa vào Queue
+
+      Khi async task hoàn thành:
+          Web APIs → Task Queue
+          Có 2 loại Queue:
+          Microtask Queue (ưu tiên cao)
+
+      Ví dụ:
+
+          Promise.then()
+          catch()
+          finally()
+          queueMicrotask()
+          MutationObserver
+          Macrotask Queue (ưu tiên thấp)
+
+      Ví dụ:
+          setTimeout
+          setInterval
+          setImmediate
+          DOM events
+  -, Quy tắc 4: Event Loop kiểm tra Call Stack
+
+      Event Loop hoạt động như sau:
+      Nếu Call Stack rỗng
+      → lấy task từ Queue
+      → đưa vào Call Stack
+
+      Pseudo code:
+
+      while(true){
+         if(callStack.empty()){
+             executeTaskFromQueue()
+         }
+      }
+      5️⃣ Quy tắc 5: Microtask chạy trước Macrotask
+
+      Sau khi code đồng bộ kết thúc:
+
+      Call Stack empty
+      ↓
+      Microtask Queue
+      ↓
+      Macrotask Queue
+
+      Ví dụ:
+
+      console.log("A");
+
+      setTimeout(() => console.log("B"), 0);
+
+      Promise.resolve().then(() => console.log("C"));
+
+      console.log("D");
+
+      Output:
+
+      A
+      D
+      C
+      B
+
+      Vì:
+
+      sync → microtask → macrotask
+  6️⃣ Quy tắc 6: Microtask phải chạy hết trước khi chạy Macrotask
+
+  Ví dụ:
+
+  Promise.resolve().then(() => {
+    console.log("A");
+  });
+
+  Promise.resolve().then(() => {
+    console.log("B");
+  });
+
+  Output:
+
+  A
+  B
+
+  Microtask chạy liên tục cho đến khi queue rỗng.
+
+  7️⃣ Quy tắc 7: Microtask sinh ra trong Microtask vẫn chạy tiếp
+
+  Ví dụ:
+
+  Promise.resolve().then(() => {
+     console.log("A");
+     Promise.resolve().then(() => console.log("B"));
+  });
+
+  Output:
+
+  A
+  B
+  8️⃣ Quy tắc 8: Microtask sinh ra trong Macrotask chạy ngay sau Macrotask
+
+  Ví dụ:
+
+  setTimeout(() => {
+     console.log("A");
+     Promise.resolve().then(() => console.log("B"));
+  },0);
+
+  Output:
+
+  A
+  B
+
+  Sau mỗi Macrotask:
+
+  Macrotask
+  ↓
+  Microtask
+  9️⃣ Quy tắc 9: setTimeout(0) vẫn không chạy ngay
+
+  Ví dụ:
+
+  setTimeout(() => console.log("A"),0);
+  console.log("B");
+
+  Output:
+
+  B
+  A
+
+  Vì:
+
+  setTimeout luôn vào Macrotask queue
+  🔟 Quy tắc 10: Event Loop lặp vô hạn
+
+  Event Loop chạy liên tục:
+
+  1. Run synchronous code
+  2. Execute all microtasks
+  3. Execute one macrotask
+  4. Execute microtasks again
+  5. Repeat
+  📊 Thứ tự ưu tiên tổng quát
+  1. Synchronous code
+  2. Microtask Queue (Promise)
+  3. Macrotask Queue (setTimeout)
+
+  🔑 Công thức nhớ nhanh
+  Sync
+  ↓
+  Microtask
+  ↓
+  Macrotask
+
+III, bộ nhớ HEAP.
+
+
+
+promise.all: Promise.all() là một phương thức trong JavaScript dùng để chạy nhiều Promise song song và đợi tất cả Promise hoàn thành.
+
+Cú Pháp:
+    const p1 = new Promise((resolve) =>
+      setTimeout(() => resolve("A"), 1000)
+    );
+
+    const p2 = new Promise((resolve) =>
+      setTimeout(() => resolve("B"), 2000)
+    );
+
+    const p3 = new Promise((resolve) =>
+      setTimeout(() => resolve("C"), 3000)
+    );
+
+    Promise.all([p1, p2, p3]).then((result) => {
+      console.log(result);
+    });
+
+   Nó nhận một mảng các Promise và trả về một Promise mới.
+
+    Cơ chế hoạt động
+
+    Ba Promise bắt đầu chạy cùng lúc:
+
+    p1 → 1s
+    p2 → 2s
+    p3 → 3s
+
+    Promise.all() sẽ đợi Promise lâu nhất hoàn thành.
+
+    Sau 3 giây:
+
+    result = ["A", "B", "C"]
+
+    Output:
+
+    ["A","B","C"]
+
+
+
+----------------------10-03-2026-------------------------------------------------------
+
+Attribute → giá trị trong HTML
+    vd:
+        <input id="username" type="text" value="hello">
+        Ở đây:
+            id
+            type
+            value
+            là HTML attributes.
+
+        Lấy Attribute trong JavaScript Dùng:
+
+            getAttribute()
+            setAttribute()
+
+        const input = document.getElementById("username");
+        console.log(input.getAttribute("value")); => hello
+
+Property → giá trị của đối tượng DOM trong JavaScript
+
+
+
+
+
+
+
+** thư viện zod
+
+
+
+
+
+
+
 
 
