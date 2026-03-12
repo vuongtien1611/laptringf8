@@ -786,9 +786,88 @@ Cú Pháp:
 
     ["A","B","C"]
 
+ *, Tóm Tắt:
+    Promise.all():
+
+    1. Nhận mảng Promise
+    2. Chạy tất cả cùng lúc
+    3. Đợi tất cả resolve
+    4. Trả về mảng kết quả
+    5. Nếu 1 Promise lỗi → reject ngay
+
 
 
 ----------------------10-03-2026-------------------------------------------------------
+
+ Lấy Attribute trong JavaScript Dùng:  getAttribute() , setAttribute()
+
+     -, getAttribute() - Lấy giá trị attribute
+                          // Dùng getAttribute() khi:
+                                Cần đọc dữ liệu từ HTML
+            cú pháp:
+                element.getAttribute("ten-attribute")
+            chức năng:
+                 Lấy giá trị hiện tại của attribute trong HTML.
+            VD:
+                 <a id="link" href="https://google.com">Google</a>
+
+                 const link = document.getElementById('link')
+                 let url = link.getSetAttribute('hrel')
+                 console.log(url)  => https://google.com
+
+     -, setAttribute() - thay đổi hoặc thêm attribute
+                          // Dùng setAttribute() khi:
+                               Muốn thay đổi HTML bằng JS
+            cú pháp:
+                 element.setAttribute('ten-attribute', 'gia-tri')
+            chức năng:
+                 thêm attribute mới nếu chưa có
+                 cập nhật giá trị nếu attribute đã tồn tại
+            VD:
+                 <img id="img1" />
+
+                 const img = document.getElementById('img1')
+                 img.setAttribute('src', 'cat.jpg')  => <img id="img1" src="cat.jpg" />
+
+     -, removeAttribute() – Xóa attribute
+
+            Cú pháp:
+              element.removeAttribute("ten-attribute")
+
+            Chức năng: Xóa một attribute khỏi HTML element.
+
+            VD:
+                <button id="btn" disabled>Submit</button>
+
+                const btn = getElementById('btn')
+                btn.removeAttribute("disabled") =>   <button id="btn">Submit</button>
+
+     -, hasAttribute() – Kiểm tra attribute có tồn tại không
+
+            Cú pháp:
+              element.hasAttribute("ten-attribute")
+
+              Trả về:
+                true → có attribute
+                false → không có attribute
+
+            VD:
+                <img id="img1" src="cat.jpg" />
+
+                const img = document.getElementById("img1")
+                console.log(img.hasAttribute("src")) => true
+                console.log(img.hasAttribute("alt")) => false
+
+     VD tổng hợp:
+                <a id="link" href="https://google.com">Google</a>
+
+                const link = document.getElementById("link");
+
+                // lấy giá trị
+                console.log(link.getAttribute("href"));
+
+                // thay đổi giá trị
+                link.setAttribute("href", "https://facebook.com");
 
 Attribute → giá trị trong HTML
     vd:
@@ -799,10 +878,7 @@ Attribute → giá trị trong HTML
             value
             là HTML attributes.
 
-        Lấy Attribute trong JavaScript Dùng:
 
-            getAttribute()
-            setAttribute()
 
         const input = document.getElementById("username");
         console.log(input.getAttribute("value")); => hello
