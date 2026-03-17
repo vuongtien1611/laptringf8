@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser storage</title>
+</head>
+<body>
+<script>
+  localStorage.setItem('theme','light')
+  const theme = localStorage.getItem('theme');
+  console.log(theme);
+
+  localStorage.setItem('user','alice');
+  localStorage.setItem('user','bob');
+
+  const name = '""'                  //    key    value
+  localStorage.setItem('name',name); // => name |  ""       name kp la gia tri rong ma la chuoi co 2 ki tu ""
+
+
+</script>
+</body>
+</html>

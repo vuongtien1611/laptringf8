@@ -904,3 +904,372 @@ thư viện axios
 
                         BOM
 
+-------------------------------2026-03-17--------------------
+
+I, Browser storage:
+    1, localStorage là một API của trình duyệt dùng để lưu dữ liệu ở client (trong browser) dưới dạng key–value (string).
+
+      a, Đặc điểm chính:
+            Lưu vĩnh viễn (không mất khi reload hay tắt tab)
+            Chỉ lưu string
+            Dung lượng ~ 5MB
+            Chỉ dùng được phía frontend (JS trong browser)
+
+      b, Cú pháp cơ bản
+          -, Lưu dữ liệu:
+                  localStorage.setItem("key", "value")
+
+          -, Lấy dữ liệu:
+                  localStorage.getItem("key")
+            VD:
+                // lưu
+                localStorage.setItem("username", "Tien")
+
+                // lấy
+                const user = localStorage.getItem("username")
+
+                console.log(user) // Tien
+
+
+          -,  Xoá dữ liệu:
+                  localStorage.removeItem("key")
+          -, Xoá toàn bộ:
+                 localStorage.clear()
+
+    2, sessionStorage
+        sessionStorage cũng giống localStorage, nhưng chỉ sống trong 1 phiên (session) — tức là đóng tab là mất dữ liệu.
+
+        a, Đặc điểm chính:
+              Lưu theo từng tab
+              Đóng tab → mất hết dữ liệu
+              Reload trang → không mất
+              Chỉ lưu string
+              Dung lượng ~ 5MB
+
+
+        b, Cú pháp (giống localStorage)
+
+           Lưu:
+           sessionStorage.setItem("key", "value")
+
+           Lấy:
+           sessionStorage.getItem("key")
+
+           Xoá:
+           sessionStorage.removeItem("key")
+
+           Xoá toàn bộ:
+           sessionStorage.clear()
+
+           VD:
+               // lưu
+               sessionStorage.setItem("username", "Tien")
+
+               // lấy
+               const user = sessionStorage.getItem("username")
+
+               console.log(user)
+
+    3, Cookie
+        Cookie là một cách lưu dữ liệu trên trình duyệt, nhưng khác với localStorage và sessionStorage ở chỗ:
+        Cookie được gửi kèm theo mỗi request lên server
+
+        a, Đặc điểm chính
+           Lưu dạng key = value
+           Dung lượng nhỏ (~4KB)
+           Có thể có thời gian hết hạn
+           Tự động gửi lên server mỗi request (HTTP)
+
+        b, Cú pháp cơ bản
+           Tạo cookie
+           document.cookie = "key=value"
+
+           Tạo cookie có thời hạn
+           document.cookie = "username=Tien; expires=Fri, 31 Dec 2026 23:59:59 UTC"
+
+           Lấy cookie
+           console.log(document.cookie)
+
+           👉 Kết quả:
+
+           username=Tien; theme=dark
+
+        ⚠️ Cookie trả về chuỗi dài, không phải object.
+
+           3. Xoá cookie
+           document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+           VD:
+                // lưu
+                document.cookie = "theme=dark"
+
+                // đọc
+                const cookies = document.cookie
+                console.log(cookies)
+
+
+II, Auth
+
+    1,JWT là gì?
+        JWT (JSON Web Token) là một chuẩn dùng để xác thực (authentication) và truyền thông tin an toàn giữa client ↔ server.
+
+        👉 Hiểu đơn giản:
+        Sau khi login thành công → server trả về token → client gửi token này trong mỗi request sau.
+
+       a, Cấu trúc JWT:
+
+        JWT gồm 3 phần:
+
+        header.payload.signature
+
+        Ví dụ:
+
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+        .
+        eyJ1c2VySWQiOjEsInJvbGUiOiJkZXYifQ
+        .
+        abc123xyz
+        📌 1. Header
+        {
+          "alg": "HS256",
+          "typ": "JWT"
+        }
+
+        👉 Thuật toán ký
+
+        📌 2. Payload
+        {
+          "userId": 1,
+          "role": "dev"
+        }
+
+        👉 Dữ liệu bạn lưu (KHÔNG mã hoá, chỉ encode)
+
+        ⚠️ Không lưu:
+
+        password thông tin nhạy cảm
+
+        📌 3. Signature
+
+        👉 Dùng secret key để ký:
+
+        HMACSHA256(
+          base64Url(header) + "." + base64Url(payload),
+          secret
+        )
+
+        👉 Giúp:
+
+        phát hiện token bị sửa
+
+        🔄 2️⃣ Flow hoạt động
+        🟢 Login
+        POST /login
+
+        Server:
+
+        const token = jwt.sign({ userId: 1 }, "secret", {
+          expiresIn: "1h"
+        });
+        🔵 Client lưu token
+
+        2 cách phổ biến:
+
+        ❌ localStorage (dễ bị XSS)
+        localStorage.setItem("token", token);
+        ✅ Cookie (an toàn hơn)
+        Set-Cookie: token=abc; HttpOnly; Secure
+        🟡 Gửi request
+        axios.get("/api", {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+        🔴 Server verify
+        jwt.verify(token, "secret");
+
+        👉 OK → cho truy cập
+        👉 Sai → 401
+
+        ⚠️ 3️⃣ Lỗi phổ biến
+        ❌ Quên "Bearer"
+        Authorization: token // ❌ sai
+        ❌ Token hết hạn
+        jwt expired
+
+        👉 fix:
+
+        refresh token
+
+        login lại
+
+        ❌ Secret không giống nhau
+        jwt.verify(token, "secret1") // nhưng sign bằng "secret2"
+        🔥 4️⃣ JWT vs Session
+        JWT	Session
+        Không lưu server	lưu server
+        scale tốt	khó scale
+        stateless	stateful
+        🔐 5️⃣ Best Practice (chuẩn senior)
+        ✅ Nên dùng
+
+        Access Token (ngắn hạn: 15m)
+
+        Refresh Token (dài hạn)
+
+        ✅ Lưu ở đâu?
+        Cách	Đánh giá
+        Cookie HttpOnly	✅ tốt nhất
+        localStorage	❌ dễ bị hack
+        ✅ Header chuẩn
+        Authorization: Bearer <token>
+        💡 6️⃣ Liên quan bạn đang học
+
+        JWT + CORS → cần credentials: true
+
+        JWT + Cookie → cần SameSite
+
+        JWT + Axios → interceptor
+
+        🚀 Ví dụ code thực tế (frontend)
+        axios.interceptors.request.use(config => {
+          const token = localStorage.getItem("token");
+
+          if(token){
+            config.headers.Authorization = "Bearer " + token;
+          }
+
+          return config;
+        });
+        🎯 Tóm tắt dễ nhớ
+        Login → server trả JWT
+        → client lưu token
+        → mỗi request gửi token
+        → server verify → cho truy cập
+    ** 1 lỗi phổ biến mà token mắc phải:
+        Khi token bị lộ mà vẫn còn hạn → server không thể thu hồi ngay
+
+        👉 Vì:
+
+        JWT không lưu trên server
+
+        Server chỉ verify(token) (chữ ký + hạn)
+
+        → Không biết token đó có bị “lộ” hay không
+
+        ⚠️ Vì sao nguy hiểm?
+
+        Ví dụ:
+
+        User login → nhận token (1h)
+
+        Hacker lấy được token
+
+        Trong 1h đó:
+        👉 Hacker dùng token → server vẫn cho access
+
+        🧠 3 cách xử lý chuẩn (senior)
+        ✅ 1️⃣ Dùng Refresh Token (chuẩn nhất)
+        Cách hoạt động:
+
+        Access Token: sống ngắn (5–15 phút)
+
+        Refresh Token: sống dài (7 ngày)
+
+        Flow:
+        Login
+        → trả access + refresh
+
+        Access hết hạn
+        → dùng refresh để xin token mới
+
+        👉 Nếu bị lộ access token:
+
+        chỉ dùng được vài phút → giảm rủi ro
+
+        ✅ 2️⃣ Blacklist token (thu hồi thủ công)
+
+        👉 Khi logout hoặc phát hiện bị hack:
+
+        blacklist.add(token);
+
+        Server check:
+
+        if (blacklist.has(token)) {
+            reject();
+        }
+
+        ⚠️ Nhược điểm:
+
+        mất tính stateless
+
+        cần lưu DB / Redis
+
+        ✅ 3️⃣ Token Version (rất hay dùng)
+
+        Trong DB:
+
+        {
+          "userId": 1,
+          "tokenVersion": 2
+        }
+
+        JWT:
+
+        {
+          "userId": 1,
+          "tokenVersion": 2
+        }
+        Khi logout / reset:
+        user.tokenVersion += 1;
+
+        👉 Token cũ:
+
+        tokenVersion = 2 ❌
+        DB = 3
+        → bị reject
+        🔥 4️⃣ Logout đúng cách
+
+        👉 JWT không có “logout thật”
+
+        → phải:
+
+        xoá token ở client
+
+        hoặc invalidate phía server (cách 2, 3)
+
+        🔐 Best Practice (chuẩn dự án thật)
+
+        ✔ Access Token: 15 phút
+        ✔ Refresh Token: HttpOnly cookie
+        ✔ Lưu refresh token trong DB
+        ✔ Có cơ chế revoke
+
+        ❌ Sai lầm phổ biến
+        Sai	Hậu quả
+        Token sống quá lâu	dễ bị hack
+        Lưu localStorage	dính XSS
+        Không có refresh token	UX kém
+        Không revoke	không logout được
+        🎯 Tóm tắt
+        JWT nhanh nhưng khó thu hồi
+        → Giải pháp:
+        1. Access token ngắn hạn
+        2. Refresh token
+        3. Blacklist / version control
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

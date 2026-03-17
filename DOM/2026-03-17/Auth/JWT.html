@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login lay token</title>
+</head>
+
+Auth:
+    1, đăng nhập;
+        thông tin email,password lên sv
+        sv kiểm tra thông tin, nếu đúng email và pass => lưu trong database
+        thì tạo 1 access token(token dùng để đăng nhập) và 1 refresh token(random string) rồi trả về cho client
+        Client lưu access token và refresh token vào localStorage
+
+    2, ở trang chủ:
+        client gửi request lấy thông tin user lên sever kèm theo access token
+        sever kiểm tra access token, nếu hợp lệ trat về thông tin user
+
+    3, khi access token hết hạn
+        Client
+
+
+
+
+
+
+
+
+
+<body>
+<script>
+
+</script>
+</body>
+</html>
