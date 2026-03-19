@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập lớn CSS</title>
+   <style>
+       /* 1. h1 và p cùng CSS */
+       h1, p {
+           color: red;
+       }
+
+       /* 2. p đứng ngay sau h1 */
+       h1 + p {
+           color: blue;
+       }
+
+       /* 3. p đứng sau h1 (cùng cấp) */
+       h1 ~ p {
+           background-color: yellow;
+       }
+
+       /* 4. hover */
+       h1:hover {
+           color: green;
+       }
+
+       /* 5. checkbox & radio */
+       input[type="checkbox"],
+       input[type="radio"] {
+           accent-color: red;
+       }
+
+       /* 6. phần tử đầu tiên */
+       li:first-child {
+           color: red;
+       }
+
+       /* 7. phần tử thứ 2 */
+       li:nth-child(2) {
+           color: blue;
+       }
+
+       /* 8. phần tử cuối */
+       li:last-child {
+           color: green;
+       }
+
+       /* 9. chọn theo loại thẻ */
+       p:nth-of-type(2) {
+           border: 2px solid black;
+       }
+   </style>
+</head>
+<body>
+
+<h1>Danh sách bài viết</h1>
+<p>Chào mừng bạn đến với website</p>
+
+<ul>
+    <li>
+        <h3>Bài viết 1</h3>
+        <p>Nội dung bài viết 1</p>
+    </li>
+    <li>
+        <h3>Bài viết 2</h3>
+        <p>Nội dung bài viết 2</p>
+    </li>
+    <li>
+        <h3>Bài viết 3</h3>
+        <p>Nội dung bài viết 3</p>
+    </li>
+    <li>
+        <h3>Bài viết 4</h3>
+        <p>Nội dung bài viết 4</p>
+    </li>
+</ul>
+
+<h2>Đăng ký</h2>
+
+<form>
+    <p>Chọn sở thích:</p>
+    <input type="checkbox"> Đá bóng <br>
+    <input type="checkbox"> Code <br>
+
+    <p>Giới tính:</p>
+    <input type="radio" name="gt"> Nam
+    <input type="radio" name="gt"> Nữ
+</form>
+
+</body>
+</html>
