@@ -5,31 +5,112 @@
     <title>login lay token</title>
 </head>
 
-Auth:
-    1, đăng nhập;
-        thông tin email,password lên sv
-        sv kiểm tra thông tin, nếu đúng email và pass => lưu trong database
-        thì tạo 1 access token(token dùng để đăng nhập) và 1 refresh token(random string) rồi trả về cho client
-        Client lưu access token và refresh token vào localStorage
+<!--Auth:-->
+<!--    1, đăng nhập;-->
+<!--        thông tin email,password lên sv-->
+<!--        sv kiểm tra thông tin, nếu đúng email và pass => lưu trong database-->
+<!--        thì tạo 1 access token(token dùng để đăng nhập) và 1 refresh token(random string) rồi trả về cho client-->
+<!--        Client lưu access token và refresh token vào localStorage-->
 
-    2, ở trang chủ:
-        client gửi request lấy thông tin user lên sever kèm theo access token
-        sever kiểm tra access token, nếu hợp lệ trat về thông tin user
+<!--    2, ở trang chủ:-->
+<!--        client gửi request lấy thông tin user lên sever kèm theo access token-->
+<!--        sever kiểm tra access token, nếu hợp lệ trat về thông tin user-->
 
-    3, khi access token hết hạn
-        Client
+<!--    3, khi access token hết hạn-->
+<!--        Client gửi request để refresh token len sever-->
+<!--        Sever kiem tra refresh token neu hop le tao ra access token moi va refresh token moi va tra ve cho client-->
+<!--        client gui lai request bi loi o boc 2 voi access token moi , neu hop le tra ve thong tin user-->
 
-
-
-
-
-
-
-
+<!--    4, dang xuat:-->
+<!--        client xoa access token va refresh token khoi localStorage-->
 
 <body>
+
+<h2>Đăng nhập</h2>
+<form id="login-form">
+    <input id="email" placeholder="Email"><br><br>
+    <input id="password" type="password" placeholder="Password"><br><br>
+
+    <button onclick="login()">Đăng nhập</button>
+</form>
+
+
+
 <script>
 
+    const formE = document.querySelector('#login-form');
+
+    formE.addEventListener('submit', (e) => {
+        e.preventDefault(); // chong load lai trang cua the form
+
+        const data = new formdata(formE)
+        const email = data.get('email')
+        const password = data.get('password')
+
+
+        try{
+            const accessToken = await login(email, password)
+            location.href="/index.html"
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    });
+
+    (async () =>{
+        const profile = await
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // async function login(){
+    //     const email = document.getElementById("email").value;
+    //     const password = document.getElementById("password").value;
+    //
+    //     try {
+    //         const res = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 email: email,
+    //                 password: password
+    //             })
+    //         });
+    //
+    //         const data = await res.json();
+    //
+    //         if(res.ok){
+    //             // lưu token
+    //             localStorage.setItem("accessToken", data.access_token);
+    //             localStorage.setItem("refreshToken", data.refresh_token);
+    //
+    //             // chuyển trang
+    //             window.location.replace("index.html");
+    //         } else {
+    //             alert("Đăng nhập thất bại");
+    //         }
+    //     } catch(err){
+    //         console.log(err);
+    //         alert("Lỗi server");
+    //     }
+    // }
 </script>
+
 </body>
 </html>

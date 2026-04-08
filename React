@@ -1,0 +1,122 @@
+react js la gi?
+    React (hay ReactJS) là một thư viện JavaScript dùng để xây dựng giao diện người dùng (UI), đặc biệt phổ biến khi làm web hiện đại.
+React được phát triển bởi: Meta Platforms (Facebook cũ)
+
+    vuongductien@vuongductien-Aspire-A715-76G:~/laptringf8$ node -v  // kiem tra xem co node hay chua
+    v24.12.0
+    vuongductien@vuongductien-Aspire-A715-76G:~/laptringf8$ npm --version // kiểm tra phiên bản của npm
+    11.6.2
+    vuongductien@vuongductien-Aspire-A715-76G:~/laptringf8$ cd Reactjs/   // Di chuyển (change directory) vào thư mục có tên Reactjs
+    vuongductien@vuongductien-Aspire-A715-76G:~/laptringf8/Reactjs$ npm create vite // tạo nhanh một project frontend mới bằng Vite
+    Need to install the following packages:
+    create-vite@9.0.4
+    Ok to proceed? (y) y
+
+
+    > npx
+    > "create-vite"
+
+    │
+    ◇  Project name:
+    │  2026-04-07
+    │
+    ◇  Select a framework:
+    │  React
+    │
+    ◇  Select a variant:
+    │  JavaScript + React Compiler
+    │
+    ◇  Install with npm and start now?
+    │  Yes
+    │
+    ◇  Scaffolding project in /home/vuongductien/laptringf8/Reactjs/2026-04-07...
+    │
+    ◇  Installing dependencies with npm...
+
+    added 153 packages, and audited 154 packages in 8s
+
+    36 packages are looking for funding
+      run `npm fund` for details
+
+    found 0 vulnerabilities
+    │
+    ◇  Starting dev server...
+
+    > 2026-04-07@0.0.0 dev
+    > vite
+
+
+      VITE v8.0.6  ready in 238 ms
+
+      ➜  Local:   http://localhost:5173/
+      ➜  Network: use --host to expose
+      ➜  press h + enter to show help
+
+khi thư viện node và package-loock.json bị xóa chạy lệnh npm i để cài lại nhưng phải có file package.json không có không cài lại đc thư viện => k chạy đc project
+
+trong package.json có:
+     "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview"
+      },
+
+    Lệnh	         Công dụng
+    npm run dev  	 Chạy project
+    npm run build	 Build deploy
+    npm run preview	 Test bản build
+    npm run lint	 Kiểm tra lỗi
+
+1, main.jsx
+
+
+
+
+2, App.jsx
+    -,giao diện rende ra trong file App.jsx
+
+    I,Hook
+      -, useState
+            Lưu dữ liệu (biến trạng thái)
+            Cập nhật dữ liệu đó
+            Tự động render lại giao diện khi dữ liệu thay đổi
+
+            vd:  Tự động render lại giao diện khi dữ liệu thay đổi khi bam vao nut click me
+                    function App() {
+                      const [num, setNum] = useState(1000)
+                      const name = 'React App'
+                      const onClick = () => {
+                        setNum(num + 1)
+                          console.log(num)
+                      }
+
+                      return (
+                          <>
+                            <h1>hihi</h1>
+                            <h2>dfjghgdk</h2>
+                            <h3>num: {num}</h3>
+                            <h3>name: {name}</h3>
+                            <button onClick={onClick}>click me</button>
+                          </>
+                      )
+                    }
+           vd: Render list (hiển thị danh sách) trong React( Biến dữ liệu (array) → thành giao diện (UI) )
+                    const students = [
+                        { id: 1, name: "Nguyen Van A" },
+                        { id: 2, name: "Nguyen Van B" },
+                        { id: 3, name: "Nguyen Van C" },
+                        { id: 4, name: "Nguyen Van D" },
+                    ]
+
+                    return (
+                        <>
+                          <ul>
+                              {students.map(student => (
+                                  <li key={student.id}>{student.name}</li>
+                              ))}
+                          </ul>
+                        </>
+                    )
+                }
+

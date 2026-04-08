@@ -3,53 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <title>Bài tập lớn CSS</title>
-   <style>
-       /* 1. h1 và p cùng CSS */
-       h1, p {
-           color: red;
-       }
+<!--   <style>-->
+<!--       /* 1. h1 và p cùng CSS */-->
+<!--       h1, p {-->
+<!--           color: red;-->
+<!--       }-->
 
-       /* 2. p đứng ngay sau h1 */
-       h1 + p {
-           color: blue;
-       }
+<!--       /* 2. p đứng ngay sau h1 */-->
+<!--       h1 + p {-->
+<!--           color: blue;-->
+<!--       }-->
 
-       /* 3. p đứng sau h1 (cùng cấp) */
-       h1 ~ p {
-           background-color: yellow;
-       }
+<!--       /* 3. p đứng sau h1 (cùng cấp) */-->
+<!--       h1 ~ p {-->
+<!--           background-color: yellow;-->
+<!--       }-->
 
-       /* 4. hover */
-       h1:hover {
-           color: green;
-       }
+<!--       /* 4. hover */-->
+<!--       h1:hover {-->
+<!--           color: green;-->
+<!--       }-->
 
-       /* 5. checkbox & radio */
-       input[type="checkbox"],
-       input[type="radio"] {
-           accent-color: red;
-       }
+<!--       /* 5. checkbox & radio */-->
+<!--       input[type="checkbox"],-->
+<!--       input[type="radio"] {-->
+<!--           accent-color: red;-->
+<!--       }-->
 
-       /* 6. phần tử đầu tiên */
-       li:first-child {
-           color: red;
-       }
+<!--       /* 6. phần tử đầu tiên */-->
+<!--       li:first-child {-->
+<!--           color: red;-->
+<!--       }-->
 
-       /* 7. phần tử thứ 2 */
-       li:nth-child(2) {
-           color: blue;
-       }
+<!--       /* 7. phần tử thứ 2 */-->
+<!--       li:nth-child(2) {-->
+<!--           color: blue;-->
+<!--       }-->
 
-       /* 8. phần tử cuối */
-       li:last-child {
-           color: green;
-       }
+<!--       /* 8. phần tử cuối */-->
+<!--       li:last-child {-->
+<!--           color: green;-->
+<!--       }-->
 
-       /* 9. chọn theo loại thẻ */
-       p:nth-of-type(2) {
-           border: 2px solid black;
-       }
-   </style>
+<!--       /* 9. chọn theo loại thẻ */-->
+<!--       p:nth-of-type(2) {-->
+<!--           border: 2px solid black;-->
+<!--       }-->
+<!--   </style>-->
+
+
+    <style>
+        body{
+            font-family: Arial;
+            max-width: 800px;
+            margin: auto;
+            background: #f5f5f5;
+        }
+
+        /* tiêu đề */
+        h1{
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        /* hover tiêu đề */
+        h1:hover {
+            color: green;
+            transform: scale(1.1);
+        }
+
+        /* h1 và p */
+        h1, p {
+            color: red;
+        }
+
+        /* p sau h1 */
+        h1 + p {
+            color: blue;
+            text-align: center;
+        }
+
+        /* p sau h1 */
+        h1 ~ p {
+            background-color: #fff3cd;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* danh sách bài viết */
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+
+        /* từng bài viết */
+        li{
+            background: white;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        /* hover bài viết */
+        li:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* màu theo vị trí */
+        li:first-child {
+            border-left: 5px solid red;
+        }
+
+        li:nth-child(2) {
+            border-left: 5px solid blue;
+        }
+
+        li:last-child {
+            border-left: 5px solid green;
+        }
+
+        /* hover tiêu đề bài viết */
+        li h3:hover{
+            color: orange;
+            cursor: pointer;
+        }
+
+        /* hover nội dung */
+        li p:hover{
+            color: purple;
+        }
+
+        /* form */
+        form{
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* checkbox radio */
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: red;
+            transform: scale(1.2);
+            margin-right: 5px;
+        }
+
+        /* hover input */
+        input:hover{
+            cursor: pointer;
+        }
+
+        /* p theo type */
+        p:nth-of-type(2) {
+            border: 2px solid black;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 

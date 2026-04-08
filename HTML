@@ -164,7 +164,13 @@ pre:
                type="submit": nút bấm, khi bấm vào đây thì verify đc email.
                type="checkbox": nút chọn (chọn đc nhiều phương án)
                type="radio": nút chọn(chỉ chọn đc một trong các đáp án)
-
+        Tự động điền: Trình duyệt sẽ tự động điền mật khẩu đã lưu từ trước (nếu người dùng đã lưu mật khẩu vào trình duyệt).
+        Cải thiện trải nghiệm người dùng: Người dùng không phải nhập lại mật khẩu mỗi lần đăng nhập.
+             autocomplete="username": Dành cho trường nhập tên người dùng (username).
+             autocomplete="current-password": Dành cho trường nhập mật khẩu hiện tại.
+             autocomplete="new-password": Dành cho trường nhập mật khẩu mới (sử dụng trong quá trình thay đổi mật khẩu).
+             VD:
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu của bạn" required autocomplete="current-password">
 
 <label>
        tác dụng: định nghĩa cho ô dữ liệu
