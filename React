@@ -77,46 +77,164 @@ trong package.json có:
     -,giao diện rende ra trong file App.jsx
 
     I,Hook
-      -, useState
-            Lưu dữ liệu (biến trạng thái)
-            Cập nhật dữ liệu đó
-            Tự động render lại giao diện khi dữ liệu thay đổi
 
-            vd:  Tự động render lại giao diện khi dữ liệu thay đổi khi bam vao nut click me
-                    function App() {
-                      const [num, setNum] = useState(1000)
-                      const name = 'React App'
-                      const onClick = () => {
-                        setNum(num + 1)
-                          console.log(num)
-                      }
+         `useState` là Hook dùng để:
 
-                      return (
-                          <>
-                            <h1>hihi</h1>
-                            <h2>dfjghgdk</h2>
-                            <h3>num: {num}</h3>
-                            <h3>name: {name}</h3>
-                            <button onClick={onClick}>click me</button>
-                          </>
-                      )
-                    }
-           vd: Render list (hiển thị danh sách) trong React( Biến dữ liệu (array) → thành giao diện (UI) )
-                    const students = [
-                        { id: 1, name: "Nguyen Van A" },
-                        { id: 2, name: "Nguyen Van B" },
-                        { id: 3, name: "Nguyen Van C" },
-                        { id: 4, name: "Nguyen Van D" },
-                    ]
+          * Lưu dữ liệu (state)
+          * Cập nhật dữ liệu
+          * Tự động render lại giao diện khi dữ liệu thay đổi
 
-                    return (
-                        <>
-                          <ul>
-                              {students.map(student => (
-                                  <li key={student.id}>{student.name}</li>
-                              ))}
-                          </ul>
-                        </>
-                    )
-                }
+        ---
 
+        Cú pháp
+
+        ```js id="c2n1kq"
+        const [state, setState] = useState(initialValue)
+        ```
+
+        * `state`: giá trị hiện tại
+        * `setState`: hàm cập nhật
+        * `initialValue`: giá trị ban đầu
+
+        ---
+
+        ## 🎯 Ví dụ 1: Click tăng số
+
+        👉 Khi bấm nút → dữ liệu thay đổi → UI tự render lại
+
+        ```jsx id="4x8v0o"
+        import { useState } from 'react'
+
+        function App() {
+          const [num, setNum] = useState(1000)
+          const name = 'React App'
+
+          const onClick = () => {
+            setNum(prev => prev + 1)
+          }
+
+          return (
+            <>
+              <h1>hihi</h1>
+              <h2>dfjghgdk</h2>
+              <h3>num: {num}</h3>
+              <h3>name: {name}</h3>
+              <button onClick={onClick}>Click me</button>
+            </>
+          )
+        }
+
+        export default App
+        ```
+
+        ### ⚠️ Lưu ý:
+
+        ```js id="kz9z3r"
+        setNum(num + 1)
+        console.log(num) // vẫn là giá trị cũ
+        ```
+
+        👉 Vì state update **không xảy ra ngay lập tức (async)**
+
+        ---
+
+        ## 🎯 Ví dụ 2: Render danh sách (List)
+
+        👉 Biến dữ liệu (array) → hiển thị ra giao diện
+
+        ```jsx id="h9y2xk"
+        function App() {
+          const students = [
+            { id: 1, name: "Nguyen Van A" },
+            { id: 2, name: "Nguyen Van B" },
+            { id: 3, name: "Nguyen Van C" },
+            { id: 4, name: "Nguyen Van D" },
+          ]
+
+          return (
+            <>
+              <ul>
+                {students.map(student => (
+                  <li key={student.id}>{student.name}</li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+
+        export default App
+        ```
+
+        ---
+
+        Nguyên tắc quan trọng
+
+        Không thay đổi trực tiếp state
+
+        ```js id="o3txz2"
+        students.push(...) // ❌ sai
+        ```
+
+        ✅Phải dùng setState
+
+        js id="x8s4iq"
+        setStudents([...students, newStudent])
+
+
+        ---
+
+        ## Tóm tắt nhanh
+
+        * `useState` dùng để quản lý dữ liệu trong component
+        * Khi state thay đổi → React tự render lại UI
+        * Không cập nhật state trực tiếp → luôn dùng `setState`
+
+
+        `useState` = **dữ liệu + render lại UI
+
+          -, useEffect:
+               là một Hook trong React dùng để xử lý các tác vụ phụ (side effects) trong component.
+               hiểu đơn giản là làm gì đó sau khi giao diện render xong
+
+               Side effect là gì?
+                Là những việc không liên quan trực tiếp đến việc render UI, ví dụ:
+                   Gọi API (axios, fetch)
+                   Lấy dữ liệu từ server
+                   Thêm event listener
+                   SetTimeout, setInterval
+                   Manipulate DOM
+
+               cú pháp cơ bản:
+                   useEffect(() => {
+                     // code chạy sau khi render
+                   }, [dependencies])
+
+               cách dùng quan trọng:
+                    Chạy 1 lần duy nhất:
+
+                        useEffect(() => {
+                          console.log('Chạy 1 lần')
+                        }, [])
+
+                    Chạy khi biến thay đổi
+                        useEffect(() => {
+                          console.log('count thay đổi')
+                        }, [count])
+
+                        Mỗi lần count đổi → chạy lại
+
+                    Chạy sau mỗi lần render
+                        useEffect(() => {
+                          console.log('luôn chạy')
+                        })
+
+                         Không có [] → render là chạy
+
+-, tim hieu ve SOLID
+
+    II, thư viện
+        1, axios
+        2, toast
+
+
+    III,
